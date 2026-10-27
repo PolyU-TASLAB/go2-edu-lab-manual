@@ -1,0 +1,13 @@
+{
+  "name": "go2-edu-lab-manual",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Build the encrypted GitHub Pages edition of the Go2 EDU lab manual",
+  "type": "module",
+  "scripts": {
+    "build:pages": "node scripts/build-pages.mjs"
+  },
+  "devDependencies": {
+    "staticrypt": "3.5.4"
+  }
+}

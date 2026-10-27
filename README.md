@@ -2,7 +2,7 @@
 
 这是一个中文静态网页项目，按常见操作分栏，记录本实验室 Unitree Go2 EDU 的开机、遥控器控制、RoboNet / OpenWrt 网络配置、SSH 连接、硬件接口和安装孔位，以及 Odin1、MID360 与 GNSS 天线安装方案。产品图来自对应厂商，保存在本地 `assets/` 目录，可离线显示；产品图不是实验室实拍。
 
-仓库保持私有，保存完整的实验室版本；当前未启用公开网页部署。
+仓库已按实验室要求公开。GitHub Pages 发布密码解密版正文，图片与图纸附件保持公开下载。
 
 六个操作栏目均采用默认收起的折叠卡片，展示图片或栏目图形、名称和简要提示。固定导航会展开并定位到对应栏目；目录旁可统一展开或收起主栏目与外置设备卡片。直接访问原有锚点也会展开相应的父级卡片。外置设备保持独立折叠，图纸和下载入口在展开后显示。
 
@@ -52,3 +52,15 @@ python3 -m http.server 8000
 - 网页中的支架图直接渲染自附件原始 PDF，两页均可查看。提供 PDF、STEP、STL、DXF 和完整 ZIP；文件保持原样，未执行设计包中的脚本。
 - 支架参数是附件中的设计尺寸，不代表已打印、装配或完成实机验证。
 - 图纸致谢：感谢 Li-Ta Hsu 老师课题组的翟伟伟提供本支架图纸。
+
+## GitHub Pages 密码解密版
+
+- 网站：<https://polyu-taslab.github.io/go2-edu-lab-manual/>。
+- 原始 `index.html` 供本地查看和维护；发布时由 StatiCrypt 3.5.4 加密，生成带中文解锁页的 `dist/index.html`。
+- 按实验室要求，图片、PDF、CAD、ZIP 不加密；公开仓库中的原始源码和历史也可直接查看。
+- Pages 仅部署 `dist/`，不直接发布原始首页。访问密码由仓库 Actions secret `STATICRYPT_PASSWORD` 提供。
+- 更新 `main` 后，GitHub Actions 自动构建并部署。
+
+本地构建：安装 Node.js 后执行 `npm ci --ignore-scripts`，在环境中设置 `STATICRYPT_PASSWORD`，然后执行 `npm run build:pages`。原始网页仍可直接打开，无需 Node.js。
+
+加密工具来源：[StatiCrypt](https://github.com/robinmoisson/staticrypt)，MIT 许可证随发布文件保存。

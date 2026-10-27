@@ -4,3 +4,6 @@ outputs/
 .env
 .env.*
 *.log
+node_modules/
+dist/
+.staticrypt.json
