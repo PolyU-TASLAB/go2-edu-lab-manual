@@ -73,3 +73,12 @@ python3 -m http.server 8000
 - SDK2 原生 DDS topic 与 ROS 2 名称分别说明；前置相机使用官方 `VideoClient.GetImageSample()`，不假定出厂存在标准 Image topic。
 - `downloads/go2-body-examples/` 与 `downloads/Go2_body_examples.zip` 包含自行编写的相机和指令参考脚本，以及中文说明。`/lab/go2/front_camera/image_raw` 为示例创建的 topic，图像时间戳使用主机接收时刻，不提供标定 TF 或 CameraInfo。
 - 本次仅编写文档与示例，未连接机器狗、运行示例或发送运动指令。脚本的环境兼容性及接口响应需在实际设备上确认。
+
+### 常用 SDK 索引
+
+`#body-sdk` 提供默认收起的官方工具卡片：Python SDK2（本页脚本使用）、C++ SDK2（CMake 工程）和 `unitree_ros2`（ROS 2 消息与通信工作区），附选用建议、Ubuntu 安装 / 编译示例和官方入口。安装命令为供读者执行的文档内容，本次未在本机或机器人上安装这些 SDK。
+
+- `#sdk-api-index`：状态订阅、VideoClient、SportClient、VuiClient 的用途、方法、模块路径与源码。
+- `#sdk-sensors`：Odin1 官方 `odin_ros_driver`，以及 MID360 的 `livox_ros_driver2` / Livox-SDK2；与外置设备安装状态相互链接。
+- 区分旧 Go1 UDP `unitree_legged_sdk` 与 Go2 SDK2；GNSS 驱动待接收机型号与协议确认后补充。
+- 官方资料查阅日期：2026-10-27。版本与实际设备服务仍需对应确认，不将仓库支持能力写成本机已安装状态。

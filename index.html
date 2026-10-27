@@ -309,12 +309,12 @@
       <summary class="chapter-summary">
         <span class="chapter-number">07</span>
         <span class="chapter-thumbnail"><span class="terminal-thumb" aria-hidden="true"><span>DDS</span><b>↗</b></span></span>
-        <span class="chapter-copy"><span class="chapter-kicker">ROBOT DATA &amp; API</span><span class="chapter-title" role="heading" aria-level="3">本体数据与常用指令</span><span class="chapter-description">SSH · ROS 2 topic · 前置相机 · 高层控制</span></span>
+        <span class="chapter-copy"><span class="chapter-kicker">ROBOT DATA &amp; API</span><span class="chapter-title" role="heading" aria-level="3">本体数据与常用指令</span><span class="chapter-description">SDK 选用 · ROS 2 topic · 前置相机 · 高层控制</span></span>
         <span class="chapter-meta">SDK2 / ROS 2</span><span class="fold-icon" aria-hidden="true"></span>
       </summary>
       <div class="chapter-content">
         <p class="chapter-intro">从机器狗内部电脑读取自带传感器数据，并通过官方高层接口发送常用指令。下列接口已核对宇树官方源码；本机 ROS 版本、已安装路径及实际 topic 列表仍需在终端确认，本页未记录实机运行结果。</p>
-        <nav class="api-guide-nav" aria-label="本体数据操作步骤"><a href="#body-connect">01 连接电脑</a><a href="#body-state">02 读取数据</a><a href="#body-camera">03 自带相机</a><a href="#body-control">04 常用指令</a><a href="#body-examples">下载示例</a></nav>
+        <nav class="api-guide-nav" aria-label="本体数据操作步骤"><a href="#body-connect">01 连接电脑</a><a href="#body-sdk">SDK 选用与安装</a><a href="#body-state">02 读取数据</a><a href="#body-camera">03 自带相机</a><a href="#body-control">04 常用指令</a><a href="#body-examples">下载示例</a></nav>
         <article class="operation-card hardware-card" id="body-connect">
           <div class="operation-card-head"><div><span class="op-icon">01</span><div><h3>连接本体电脑，确认开发环境</h3><p>已提供的 SSH 入口：192.168.123.18 / unitree；密码见 SSH 栏目。</p></div></div><span class="note-tag">先只读检查</span></div>
           <p class="controller-copy">先连接 RoboNet，再登录机器狗电脑。登录后，选择连接机器人内部网络的网卡运行 DDS / ROS 2 程序；SSH 地址、DDS 网卡名与相机 topic 分别确认。</p>
@@ -334,6 +334,66 @@ export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 export ROS_DOMAIN_ID=0
 export CYCLONEDDS_URI=&quot;&lt;CycloneDDS&gt;&lt;Domain&gt;&lt;General&gt;&lt;Interfaces&gt;&lt;NetworkInterface name=\&quot;${GO2_IFACE}\&quot; priority=\&quot;default\&quot; multicast=\&quot;default\&quot;/&gt;&lt;/Interfaces&gt;&lt;/General&gt;&lt;/Domain&gt;&lt;/CycloneDDS&gt;&quot;
 ros2 topic list -t</code></pre></div><div class="source-links"><a href="https://github.com/unitreerobotics/unitree_ros2#configuration" target="_blank" rel="noopener noreferrer">官方 ROS 2 安装与网卡设置 ↗</a><a href="https://github.com/unitreerobotics/unitree_sdk2_python#installation" target="_blank" rel="noopener noreferrer">官方 Python SDK2 安装 ↗</a></div></details>
+        </article>
+        <article class="operation-card hardware-card" id="body-sdk">
+          <div class="operation-card-head"><div><span class="op-icon">SDK</span><div><h3>常用 SDK：按开发任务选择</h3><p>三个官方入口，安装和接口说明可分别展开。</p></div></div><span class="note-tag">官方工具</span></div>
+          <p class="controller-copy">本页相机与高层指令脚本使用 Python SDK2；需要接入 RViz、rosbag 或 ROS 2 算法时，再准备官方 ROS 2 消息工作区。编写 C++ 应用可选择 C++ SDK2。按任务选择所需工具即可。</p>
+          <div class="sdk-grid">
+            <details class="sdk-card" id="sdk-python">
+              <summary><span class="sdk-label">PYTHON</span><strong>unitree_sdk2_python</strong><span class="sdk-purpose">相机取图、状态订阅、常用指令</span><span class="sdk-status">本页示例使用 · 展开安装 +</span></summary>
+              <div class="sdk-card-content">
+                <p>Python ≥ 3.8；官方依赖包含 CycloneDDS 0.10.2、NumPy 和 OpenCV。以下为 Ubuntu 开发环境的安装示例；已有 SDK 时先确认路径，避免重复安装。</p>
+                <div class="code-panel"><div class="code-panel-bar"><span>Ubuntu：安装到独立 Python 环境</span><button class="copy" data-copy-target="sdk-python-install" data-copy-label="Python SDK 安装命令">复制命令</button></div><pre id="sdk-python-install"><code>sudo apt install git python3-pip python3-venv
+python3 -m venv --system-site-packages ~/venvs/go2-sdk2
+source ~/venvs/go2-sdk2/bin/activate
+cd ~
+git clone https://github.com/unitreerobotics/unitree_sdk2_python.git
+cd ~/unitree_sdk2_python
+python3 -m pip install -e .</code></pre></div>
+                <p>新终端先激活同一个环境。若出现 <code>Could not locate cyclonedds</code>，按官方 FAQ 编译相应 CycloneDDS 并设置 <code>CYCLONEDDS_HOME</code>。使用本页 ROS 2 图像桥接时，还需加载 ROS 2 环境，并确保虚拟环境的 Python 版本与系统 ROS 2 匹配；<code>rclpy</code> 不随 SDK2 安装。</p>
+                <div class="source-links"><a href="https://github.com/unitreerobotics/unitree_sdk2_python" target="_blank" rel="noopener noreferrer">官方仓库 / 安装 FAQ ↗</a><a href="https://github.com/unitreerobotics/unitree_sdk2_python/tree/master/example/go2" target="_blank" rel="noopener noreferrer">Go2 专用示例目录 ↗</a></div>
+              </div>
+            </details>
+            <details class="sdk-card" id="sdk-cpp">
+              <summary><span class="sdk-label">C++</span><strong>unitree_sdk2</strong><span class="sdk-purpose">C++ 应用、工程集成与高层服务</span><span class="sdk-status">CMake 工程 · 展开编译 +</span></summary>
+              <div class="sdk-card-content">
+                <p>官方预编译环境为 Ubuntu 20.04、GCC 9.4.0，提供 aarch64 与 x86_64 库。下方只构建 SDK 示例；二进制与实际主机架构、系统兼容性需对应确认。</p>
+                <div class="code-panel"><div class="code-panel-bar"><span>Ubuntu：获取依赖并编译</span><button class="copy" data-copy-target="sdk-cpp-install" data-copy-label="C++ SDK 编译命令">复制命令</button></div><pre id="sdk-cpp-install"><code>sudo apt install git cmake g++ build-essential libyaml-cpp-dev libeigen3-dev libboost-all-dev libfmt-dev
+cd ~
+git clone https://github.com/unitreerobotics/unitree_sdk2.git
+cd ~/unitree_sdk2
+mkdir -p build
+cd build
+cmake ..
+cmake --build . -j2</code></pre></div>
+                <p>构建后的程序位于 <code>build/bin/</code>。项目集成及安装前缀参考官方 README；Go2 示例从 <code>example/go2/</code> 进入，运行前先查看所选程序会执行的动作。</p>
+                <div class="source-links"><a href="https://github.com/unitreerobotics/unitree_sdk2" target="_blank" rel="noopener noreferrer">官方仓库 / 工程集成 ↗</a><a href="https://github.com/unitreerobotics/unitree_sdk2/tree/main/example/go2" target="_blank" rel="noopener noreferrer">Go2 C++ 示例目录 ↗</a></div>
+              </div>
+            </details>
+            <details class="sdk-card" id="sdk-ros2">
+              <summary><span class="sdk-label">ROS 2</span><strong>unitree_ros2</strong><span class="sdk-purpose">topic、RViz、rosbag 与算法节点</span><span class="sdk-status">消息与通信工作区 · 展开入口 +</span></summary>
+              <div class="sdk-card-content">
+                <p>官方仓库提供机器人消息包、CycloneDDS 配置与示例，通过 DDS 与机器人通信。README 列出 Ubuntu 20.04 / Foxy、Ubuntu 22.04 / Humble，并推荐 Humble；本机版本尚未登记。</p>
+                <p>从官方安装流程准备 ROS 2、<code>rmw_cyclonedds_cpp</code> 和 <code>cyclonedds_ws</code>，再使用上方“连接电脑”中的环境设置。核心消息包为 <code>unitree_go</code> 与 <code>unitree_api</code>。只使用本页纯 Python 取图或指令脚本时，无需先安装 ROS 2。</p>
+                <p>已有 ROS 1 算法不能直接照搬本页 <code>ros2</code> 命令；需要相应版本的驱动或另行配置桥接。</p>
+                <div class="source-links"><a href="https://github.com/unitreerobotics/unitree_ros2#installation" target="_blank" rel="noopener noreferrer">官方安装与编译流程 ↗</a><a href="#body-connect">本页 DDS 环境设置 →</a><a href="#body-state">状态 topic 与 rosbag →</a></div>
+              </div>
+            </details>
+          </div>
+          <details class="api-extra" id="sdk-api-index"><summary>常用 Python 接口速查：状态、相机、动作、灯光 / 音量</summary>
+            <p class="controller-copy">以下均来自官方 SDK2。通信入口 <code>ChannelFactoryInitialize(0, GO2_IFACE)</code> 中的第二项填写实际网卡名；RPC 客户端按对应示例设置超时并调用 <code>Init()</code>。</p>
+            <div class="manual-table-wrap"><table class="manual-table"><caption class="sr-only">Go2 常用 Python SDK2 接口索引</caption><thead><tr><th scope="col">用途</th><th scope="col">类 / 常用方法</th><th scope="col">源码与本页说明</th></tr></thead><tbody>
+              <tr><th scope="row">订阅机器人状态</th><td><code>ChannelSubscriber</code><br><code>unitree_sdk2py.core.channel</code><br>DDS topic 示例：<code>rt/lowstate</code></td><td><a href="https://github.com/unitreerobotics/unitree_sdk2_python/blob/master/unitree_sdk2py/core/channel.py" target="_blank" rel="noopener noreferrer">官方通信接口 ↗</a><br><a href="#body-state">数据类型与 topic →</a></td></tr>
+              <tr><th scope="row">前置相机</th><td><code>VideoClient.GetImageSample()</code><br><code>unitree_sdk2py.go2.video.video_client</code></td><td><a href="https://github.com/unitreerobotics/unitree_sdk2_python/blob/master/unitree_sdk2py/go2/video/video_client.py" target="_blank" rel="noopener noreferrer">官方源码 ↗</a><br><a href="#body-camera">保存图像 / 发布 ROS 图像 →</a></td></tr>
+              <tr><th scope="row">高层运动</th><td><code>SportClient</code><br><code>StopMove / StandUp / StandDown / Move</code><br><code>unitree_sdk2py.go2.sport.sport_client</code></td><td><a href="https://github.com/unitreerobotics/unitree_sdk2_python/blob/master/unitree_sdk2py/go2/sport/sport_client.py" target="_blank" rel="noopener noreferrer">官方源码 ↗</a><br><a href="#body-control">常用指令与执行方式 →</a></td></tr>
+              <tr><th scope="row">灯光与音量</th><td><code>VuiClient</code><br><code>GetBrightness / SetBrightness</code><br><code>GetVolume / SetVolume</code><br><code>unitree_sdk2py.go2.vui.vui_client</code></td><td><a href="https://github.com/unitreerobotics/unitree_sdk2_python/blob/master/unitree_sdk2py/go2/vui/vui_client.py" target="_blank" rel="noopener noreferrer">官方源码 ↗</a><br><a href="https://github.com/unitreerobotics/unitree_sdk2_python/blob/master/example/vui_client/vui_client_example.py" target="_blank" rel="noopener noreferrer">官方示例（会修改设置）↗</a></td></tr>
+            </tbody></table></div>
+          </details>
+          <details class="api-extra" id="sdk-sensors"><summary>外置设备驱动：Odin1 / MID360</summary>
+            <div class="api-method-grid"><div><span>ODIN1 · 已安装</span><h4>odin_ros_driver</h4><p>留形科技官方 ROS 1 / ROS 2 驱动，用于接收 Odin1 数据与建图定位输出。按驱动要求匹配设备固件；本机启用模式与驱动版本尚未登记。</p><div class="source-links"><a href="https://github.com/manifoldsdk/odin_ros_driver" target="_blank" rel="noopener noreferrer">官方驱动 / 编译与启动 ↗</a><a href="#odin1">安装位置与设备说明 →</a></div></div><div><span>MID360 · 缺安装保护架</span><h4>livox_ros_driver2</h4><p>Livox 官方 ROS / ROS 2 驱动，需先构建 Livox-SDK2。接入时按实际雷达与主机地址配置 MID360 文件；当前尚未作为本机已安装设备登记。</p><div class="source-links"><a href="https://github.com/Livox-SDK/livox_ros_driver2" target="_blank" rel="noopener noreferrer">官方驱动 / MID360 配置 ↗</a><a href="https://github.com/Livox-SDK/Livox-SDK2" target="_blank" rel="noopener noreferrer">Livox-SDK2 ↗</a><a href="#mid360">设备状态 →</a></div></div></div>
+            <p class="controller-copy">GNSS 天线本身不决定驱动；接收机型号、输出协议与接入主机确认后，再补对应 SDK 或 ROS 驱动。</p>
+          </details>
+          <div class="hardware-note"><b>下载时确认 SDK 代际与机器人型号</b><p>Go2 本页使用 SDK2。旧 <code>unitree_legged_sdk</code> 的当前 Go1 分支采用 UDP，官方列出的支持型号为 Go1；不能将其示例直接套到这里。SDK2 仓库也包含其他型号示例，请选择 <code>go2</code> 目录。部分 README 的示例路径已变化，以上链接按当前仓库目录核对。</p><a href="https://github.com/unitreerobotics/unitree_legged_sdk/tree/go1" target="_blank" rel="noopener noreferrer">旧版 Go1 SDK 适用范围 ↗</a></div>
         </article>
         <article class="operation-card hardware-card" id="body-state">
           <div class="operation-card-head"><div><span class="op-icon">02</span><div><h3>查看自带数据与 topic</h3><p>先发现，再查看类型、发布节点和实际内容。</p></div></div><span class="note-tag">只读</span></div>

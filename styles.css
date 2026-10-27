@@ -468,3 +468,26 @@ footer a { text-decoration: none; color: #93a380; }
 .api-guide-nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}.api-guide-nav a{padding:7px 12px;border:1px solid #dfe6d3;background:#f4f7ec;border-radius:6px;text-decoration:none;font-size:11px;color:#728664}.api-guide-nav a:hover{border-color:#8ea67b;background:#edf3e2}.code-panel{margin-top:16px;border:1px solid #dce4d1;border-radius:8px;overflow:hidden;background:#253b2e}.code-panel-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#304935;padding:10px 14px;border-bottom:1px solid #49603e}.code-panel-bar>span{font-size:10px;color:#b7c5a4}.code-panel-bar .copy{font-size:10px;color:#c4d2b4;border-color:#5e7750}.code-panel-bar .copy:hover{color:#fff;background:#49613e}.code-panel pre{margin:0;padding:18px;color:#e2ead6;font:11px/1.95 var(--mono);overflow-x:auto;tab-size:4}.code-panel code{font:inherit;color:inherit;white-space:pre}.api-extra{margin-top:20px;padding-top:16px;border-top:1px solid #e5ebdb}.api-extra>summary{font-size:12px;color:#6c8958;cursor:pointer;font-weight:500}.api-method-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:19px}.api-method-grid>div{padding:18px;background:#f3f6eb;border:1px solid #e3e9d8;border-radius:8px}.api-method-grid span{font-size:10px;color:#8a9d77}.api-method-grid h4{font-size:14px;font-weight:500;color:#4c6a3c;margin:9px 0 7px}.api-method-grid p{font-size:12px;line-height:1.9;color:#7c906a;margin:0}#body-data .hardware-card{scroll-margin-top:88px}#body-data code:not(pre code){font-family:var(--mono);font-size:.92em;overflow-wrap:anywhere}#body-data .manual-table td{min-width:125px}
 @media(max-width:600px){.api-guide-nav{gap:6px}.api-guide-nav a{padding:6px 8px;font-size:10px}.code-panel-bar{padding:10px}.code-panel-bar>span{font-size:9px;line-height:1.7}.code-panel pre{font-size:10px;padding:14px}.api-method-grid{grid-template-columns:1fr}.api-method-grid>div{padding:15px}.api-extra>summary{font-size:11px}}
 .api-command-list{border:1px solid #dfe6d5;border-radius:8px;overflow:hidden;margin-top:16px}.api-command-row{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:15px 17px;background:#f5f8ee;border-bottom:1px solid #e1e9d6}.api-command-row:last-child{border:0}.api-command-row>div{min-width:0}.api-command-row b{display:block;font-size:12px;color:#5c7a49;font-weight:500;margin-bottom:7px}.api-command-row code{display:block;font-size:11px;color:#7b926a;overflow-wrap:anywhere}.api-command-row .copy{flex:none}
+
+/* SDK choices remain compact until a reader opens installation details. */
+.sdk-grid { display: grid; gap: 12px; margin-top: 22px; }
+.sdk-card { min-width: 0; border: 1px solid #dfe6d5; border-radius: 9px; background: #f6f8f0; overflow: hidden; scroll-margin-top: 88px; }
+.sdk-card > summary { list-style: none; display: grid; grid-template-columns: 68px minmax(0, 1fr) auto; gap: 6px 16px; align-items: center; padding: 19px; cursor: pointer; }
+.sdk-card > summary::-webkit-details-marker { display: none; }
+.sdk-label { grid-row: span 2; font: 10px var(--mono); letter-spacing: .07em; color: #678354; }
+.sdk-card strong { font: 13px var(--mono); color: #49663a; overflow-wrap: anywhere; }
+.sdk-purpose { grid-column: 2; font-size: 11px; color: #81916f; }
+.sdk-status { grid-column: 3; grid-row: 1 / span 2; font-size: 10px; color: #728560; }
+.sdk-card[open] > summary { background: #edf2e4; border-bottom: 1px solid #dfe6d5; }
+.sdk-card > summary:focus-visible { outline: 2px solid #678354; outline-offset: -3px; }
+.sdk-card-content { padding: 5px 19px 19px; }
+.sdk-card-content p { font-size: 12px; line-height: 1.95; color: #7c906a; }
+#sdk-api-index, #sdk-sensors { scroll-margin-top: 88px; }
+@media (max-width: 600px) {
+  .sdk-card > summary { grid-template-columns: 52px minmax(0, 1fr); padding: 15px 12px; gap: 7px 10px; }
+  .sdk-label { grid-row: span 3; font-size: 9px; }
+  .sdk-card strong { font-size: 11px; }
+  .sdk-status { grid-column: 2; grid-row: auto; font-size: 9px; }
+  .sdk-purpose { font-size: 10px; line-height: 1.7; }
+  .sdk-card-content { padding: 4px 12px 15px; }
+}
