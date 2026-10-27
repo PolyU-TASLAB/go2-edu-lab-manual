@@ -2,6 +2,7 @@ import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import './localize-manual.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const output = path.join(root, 'dist');
@@ -14,10 +15,10 @@ const result = spawnSync(process.execPath, [
   path.join(root, 'node_modules/staticrypt/cli/index.js'),
   'index.html', '--directory', 'dist', '--config', 'false', '--short',
   '--remember', 'false', '--template', 'scripts/password-template.html',
-  '--template-title', 'Go2 EDU｜实验室使用手册',
+  '--template-title', 'Go2 EDU | Lab Field Guide',
 ], { cwd: root, env: process.env, stdio: 'inherit' });
 if (result.status !== 0) throw new Error('Encrypted Pages build failed.');
-for (const item of ['styles.css', 'app.js', 'assets', 'downloads']) {
+for (const item of ['styles.css', 'app.js', 'i18n.js', 'assets', 'downloads']) {
   await cp(path.join(root, item), path.join(output, item), { recursive: true });
 }
 await cp(path.join(root, 'node_modules/staticrypt/LICENSE'), path.join(output, 'STATICRYPT-LICENSE.txt'));

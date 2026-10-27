@@ -5,6 +5,7 @@
   "description": "Build the encrypted GitHub Pages edition of the Go2 EDU lab manual",
   "type": "module",
   "scripts": {
+    "build:manual": "node scripts/localize-manual.mjs",
     "build:pages": "node scripts/build-pages.mjs"
   },
   "devDependencies": {

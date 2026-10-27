@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ed">
+  <meta name="description" content="实验室 Unitree Go2 EDU 机器狗操作、网络与硬件记录。">
+  <title>Unitree Go2 EDU｜实验室使用手册</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="返回手册首页"><span class="brand-mark">G2<span>／</span></span><span class="brand-copy"><b>ROBOTICS LAB</b><span>设备操作档案</span></span></a>
+    <div class="topbar-actions"><div class="topbar-meta">UNITREE GO2 EDU <span class="divider">/</span> <span>FIELD MANUAL</span></div><nav class="language-switch" aria-label="界面语言" data-i18n-ignore><button type="button" data-language="en" lang="en" aria-pressed="true">English</button><button type="button" data-language="zh-CN" lang="zh-CN" aria-pressed="false">中文</button></nav></div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow hero-eyebrow"><span class="edition-line"></span> LABORATORY FIELD GUIDE</p>
+        <h1><span class="hero-model">Go2 <i>EDU</i><span class="hero-period">.</span></span><span class="hero-title">实验室使用手册</span></h1>
+        <p class="lede">本机操作、网络接入与外置设备配置。<br>按栏目展开，快速找到需要的信息。</p>
+        <a class="hero-link" href="#operation-nav">开始查阅 <span aria-hidden="true">↗</span></a>
+      </div>
+      <figure class="hero-art">
+        <img src="assets/unitree-go2-product.png" alt="Unitree Go2 四足机器狗官方产品图" fetchpriority="high">
+        <figcaption class="art-caption"><a href="https://www.unitree.com/go2/" target="_blank" rel="noopener noreferrer">宇树 Go2 官网产品图</a> <span>·</span> 非实验室实拍</figcaption>
+      </figure>
+      <div class="hero-index"><span>UNITREE</span><b>Go2 EDU</b><span>实验室专用操作参考</span></div>
+    </section>
+
+    <section class="quickbar" aria-label="网络信息速览">
+      <div class="quick-label"><span>QUICK CONNECT</span><b>快速连接</b></div>
+      <div class="quick-item"><span>设备 Wi-Fi</span><strong>RoboNet</strong><button class="copy" data-copy="RoboNet" aria-label="复制 RoboNet">复制</button></div>
+      <div class="quick-item"><span>Wi-Fi 密码</span><strong>node123456</strong><button class="copy" data-copy="node123456" aria-label="复制 Wi-Fi 密码">复制</button></div>
+      <div class="quick-item"><span>路由器管理页</span><strong>192.168.124.1</strong><button class="copy" data-copy="http://192.168.124.1" aria-label="复制管理地址">复制</button></div>
+    </section>
+
+    <nav class="operation-nav" id="operation-nav" aria-label="常见操作栏目">
+      <a href="#startup"><span>01</span>开机</a>
+      <a href="#controller"><span>02</span>遥控器控制</a>
+      <a href="#network"><span>03</span>网络配置</a>
+      <a href="#ssh"><span>04</span>SSH 连接</a>
+      <a href="#records"><span>05</span>硬件接口 / 孔位</a>
+      <a href="#external-devices"><span>06</span>外置设备</a>
+      <a href="#body-data"><span>07</span>本体数据 / 指令</a>
+    </nav>
+
+
+    <div class="manual-heading">
+      <div><p class="eyebrow">THE FIELD GUIDE</p><h2>操作目录 <span>07</span></h2></div>
+      <div class="manual-controls"><button type="button" data-fold-action="expand">全部展开 <span aria-hidden="true">＋</span></button><button type="button" data-fold-action="collapse">全部收起 <span aria-hidden="true">−</span></button></div>
+    </div>
+    <details class="chapter-card" id="startup">
+      <summary class="chapter-summary">
+        <span class="chapter-number">01</span>
+        <span class="chapter-thumbnail thumbnail-startup"><img src="assets/unitree-go2-product.png" alt="Go2 官方产品图" loading="lazy"></span>
+        <span class="chapter-copy"><span class="chapter-kicker">STARTUP</span><span class="chapter-title" role="heading" aria-level="3">开机</span><span class="chapter-description">短按 → 长按 → 等待自动站起</span></span>
+        <span class="chapter-meta">启动流程</span>
+        <span class="fold-icon" aria-hidden="true"></span>
+      </summary>
+      <div class="chapter-content">
+        <p class="chapter-intro">启动前按规定摆好机身与四肢，并确认关节状态正常。完成电源操作后等待初始化，本机会自动站起。</p>
+      <article class="operation-card">
+        <div class="operation-card-head"><div><span class="op-icon">⏻</span><div><h3>本机开机流程</h3><p>结合实验室操作记录与宇树 Go2 用户手册。</p></div></div><span class="note-tag">资料已查证</span></div>
+        <ol class="steps">
+          <li><span class="step-no">01</span><div><h3>摆好机身与四肢</h3><p>放在平整地面，腹部支撑垫贴地，机身保持水平。小腿完全收拢，四腿关节与足端平放，避免机身压住大腿或小腿；确认各关节状态正常。</p></div></li>
+          <li><span class="step-no">02</span><div><h3>短按后接长按电源键</h3><p>先短按一下，再长按至少 2 秒。本机可听到关节与风扇启动声；声音响起表示启动已开始，随后继续等待。</p></div></li>
+          <li><span class="step-no">03</span><div><h3>等待自动站起</h3><p>本机启动后会自动站起来。宇树手册给出的参考等待时间约为 2 分钟，正常启动时头部指示灯由绿色闪烁转为常亮，机身保持水平；以实际状态为准。</p></div></li>
+        </ol>
+        <details class="source-note"><summary>开机姿态 · 资料依据</summary><p>宇树《Go2 用户手册》明确要求按规定姿态开机，并在开机失败时先检查摆放姿态。上述操作要求有手册依据。</p><div class="source-links"><a href="https://static.generation-robots.com/media/Go2-User-Manual.pdf#page=8" target="_blank" rel="noopener noreferrer">宇树 Go2 用户手册 V1.0 · 第 10 页（镜像） ↗</a></div></details>
+      </article>
+      </div>
+    </details>
+
+    <details class="chapter-card" id="controller">
+      <summary class="chapter-summary">
+        <span class="chapter-number">02</span>
+        <span class="chapter-thumbnail thumbnail-controller"><img src="assets/unitree-go2-controller.png" alt="官方遥控器产品图" loading="lazy"></span>
+        <span class="chapter-copy"><span class="chapter-kicker">CONTROLLER</span><span class="chapter-title" role="heading" aria-level="3">遥控器控制</span><span class="chapter-description">官方手持遥控器 · R1 / R3</span></span>
+        <span class="chapter-meta">官方遥控器</span>
+        <span class="fold-icon" aria-hidden="true"></span>
+      </summary>
+      <div class="chapter-content">
+        <p class="chapter-intro">使用宇树官方双手手持遥控器。以下根据官方现行手册整理，涵盖 R1 / R3；按键功能以设备当前固件与 App 内说明为准。</p>
+      <div class="controller-overview">
+        <figure class="controller-photo card"><img src="assets/unitree-go2-controller.png" alt="宇树官方 Go2 双手手持遥控器产品图" loading="lazy" width="659" height="416"><figcaption><a href="https://www.unitree.com/go2/control/" target="_blank" rel="noopener noreferrer">宇树官方手持遥控器产品图 ↗</a></figcaption></figure>
+        <article class="operation-card controller-start">
+          <div class="card-topline"><span>开关机与连接</span><span class="note-tag">官方说明</span></div>
+          <ol class="steps">
+            <li><span class="step-no">01</span><div><h3>开启遥控器</h3><p>电源键短按一次，再长按超过 2 秒。声音模式下，R3 开机提示两声，R1 提示一声。</p></div></li>
+            <li><span class="step-no">02</span><div><h3>确认数传连接</h3><p>已绑定的遥控器开机后可连接机器狗。R3 看右侧 <b>DL</b> 指示灯亮起；R1 看左侧数传信号灯全亮。</p></div></li>
+            <li><span class="step-no">03</span><div><h3>关闭遥控器</h3><p>电源键短按一次，再长按超过 2 秒；声音模式下提示三声。</p></div></li>
+          </ol>
+        </article>
+      </div>
+      <article class="operation-card controller-block" id="controller-pairing">
+        <div class="operation-card-head"><div><span class="op-icon">↔</span><div><h3>首次绑定</h3><p>使用 Unitree Go App 绑定遥控器与机器狗。</p></div></div><span class="step-count">PAIRING</span></div>
+        <p class="controller-copy">连接机器狗后，进入 <b>设置 → 数据 → 遥控器</b>，打开遥控器开关，填写这只遥控器对应的编码。旧版 App 的入口为“设置 → 遥控器设置”。</p>
+        <div class="tip"><span class="tip-icon">i</span><p>本页尚未记录实验室遥控器的绑定编码，请填写实际编码。绑定完成后，用上方的数传指示灯确认连接。</p></div>
+      </article>
+      <article class="operation-card controller-block" id="controller-sticks">
+        <div class="card-topline"><span>摇杆功能</span><span class="step-count">STICKS</span></div>
+        <div class="manual-table-wrap"><table class="manual-table"><caption class="sr-only">官方遥控器在行走和站立模式下的摇杆功能</caption><thead><tr><th scope="col">摇杆动作</th><th scope="col">行走模式</th><th scope="col">站立姿态模式</th></tr></thead><tbody><tr><th scope="row">左摇杆 ↑ / ↓</th><td>前进 / 后退</td><td>机身升高 / 降低</td></tr><tr><th scope="row">左摇杆 ← / →</th><td>向左 / 向右平移</td><td>机身左右侧倾</td></tr><tr><th scope="row">右摇杆 ↑ / ↓</th><td>抬头 / 低头</td><td>抬头 / 低头</td></tr><tr><th scope="row">右摇杆 ← / →</th><td>向左 / 向右转向</td><td>左右扭身</td></tr></tbody></table></div>
+      </article>
+      <article class="operation-card controller-block" id="controller-keys">
+        <div class="card-topline"><span>常用按键与模式</span><span class="step-count">SHORTCUTS</span></div>
+        <p class="controller-copy key-legend">组合键：先按住肩键，再点按另一个键。</p>
+        <div class="stop-command"><div><span>阻尼模式 / 软急停</span><strong><kbd>L2</kbd><i>按住</i><b>+</b><kbd>B</kbd><i>点按</i></strong></div><p>关节进入阻尼状态，机身可能下沉。站立锁定使用下表的 L2 + A。</p></div>
+        <div class="manual-table-wrap"><table class="manual-table"><caption class="sr-only">官方遥控器常用按键</caption><thead><tr><th scope="col">按键</th><th scope="col">功能</th></tr></thead><tbody><tr><th scope="row"><kbd>START</kbd> 点按</th><td>解锁 / 默认行走步态</td></tr><tr><th scope="row"><kbd>SELECT</kbd> 点按</th><td>姿态模式</td></tr><tr><th scope="row"><kbd>L2</kbd> 按住 + <kbd>A</kbd> 点按</th><td>站立锁定 / 趴下</td></tr><tr><th scope="row"><kbd>L2</kbd> 按住 + <kbd>START</kbd> 点按</th><td>跑步模式</td></tr><tr><th scope="row"><kbd>L1</kbd> 按住 + <kbd>SELECT</kbd> 点按</th><td>续航模式</td></tr><tr><th scope="row"><kbd>X</kbd> 点按</th><td>开启避障</td></tr><tr><th scope="row"><kbd>Y</kbd> 长按 3 秒</th><td>关闭避障</td></tr><tr><th scope="row"><kbd>L2</kbd> + <kbd>SELECT</kbd> 点按</th><td>切换探照灯</td></tr></tbody></table></div>
+      </article>
+      <details class="operation-card controller-block controller-details"><summary>摇杆校准、充电与版本说明</summary><div class="details-content"><h3>摇杆校准</h3><p>先保持摇杆不动，同时按下并松开 <kbd>F1</kbd> 和 <kbd>F3</kbd>。听到每秒一次的提示音后，将左右摇杆各自推至最大行程并转动数圈；提示音停止后，点按 <kbd>F3</kbd> 完成校准。</p><h3>充电</h3><p>关闭遥控器后，通过 USB-C 接口连接 5V USB 充电器。R3 充满时电量灯全亮，R1 旧版手册记载为全灭；按对应版本判断。</p><h3>版本适用范围</h3><p>宇树现行手册同时收录 R1 与 R3，说明二者核心操作一致。不同固件的扩展动作可能变化，完整动作表请查看官方手册或 Unitree Go App。</p></div></details>
+      <div class="controller-sources"><span>资料来源</span><a href="https://marketing.unitree.com/article/en/Go2/Handheld_Remote_Control.html" target="_blank" rel="noopener noreferrer">宇树官方手持遥控器手册（含 R1 / R3） ↗</a><a href="https://static.generation-robots.com/media/Go2-Handheld-Remote-Control.pdf" target="_blank" rel="noopener noreferrer">宇树手册 V1.0 镜像 ↗</a></div>
+      </div>
+    </details>
+
+    <details class="chapter-card" id="network">
+      <summary class="chapter-summary">
+        <span class="chapter-number">03</span>
+        <span class="chapter-thumbnail thumbnail-network"><span class="mini-network" aria-hidden="true"><span>RoboNet</span><i></i><b>Cudy</b><i></i><span>Go2</span></span></span>
+        <span class="chapter-copy"><span class="chapter-kicker">NETWORK</span><span class="chapter-title" role="heading" aria-level="3">网络配置</span><span class="chapter-description">RoboNet · Cudy / OpenWrt</span></span>
+        <span class="chapter-meta">RoboNet</span>
+        <span class="fold-icon" aria-hidden="true"></span>
+      </summary>
+      <div class="chapter-content">
+        <p class="chapter-intro">实验室自备 Cudy 2×2 MIMO 路由设备，运行 OpenWrt，提供 RoboNet Wi-Fi。接入设备可访问机器狗局域网；配置上联后也可访问外网。</p>
+
+      <div class="topology card">
+        <div class="card-topline"><span>连接拓扑</span><span class="live-label">局域网与上游网络</span></div>
+        <div class="network-map" role="group" aria-label="手机或电脑通过 RoboNet 接入实验室 Cudy 路由器，访问 Go2；Cudy 通过上联 Wi-Fi 接入手机热点获得外网">
+          <div class="map-upstream"><span>上游 / 外网</span><strong>手机热点</strong></div>
+          <div class="map-vertical"><span>上联 Wi-Fi</span></div>
+          <div class="map-client map-device"><small>操作设备</small><strong>手机 / 电脑</strong><span>连接 RoboNet</span></div>
+          <div class="map-wire map-wifi"><span>RoboNet</span></div>
+          <div class="map-router map-device"><small>实验室自备设备</small><strong>Cudy · OpenWrt</strong><span>管理页 192.168.124.1</span></div>
+          <div class="map-wire map-lan"><span>局域网访问</span></div>
+          <div class="map-robot map-device"><small>机器狗</small><strong>Go2 EDU</strong><span>192.168.123.18</span></div>
+        </div>
+        <div class="map-caption">连接 RoboNet 访问 Go2；Cudy 上联成功后，可同时访问外网。</div>
+      </div>
+
+      <div class="setup-grid">
+        <article class="card steps-card">
+          <div class="card-topline"><span>配置步骤</span><span class="step-count">3 STEPS</span></div>
+          <ol class="steps">
+            <li><span class="step-no">01</span><div><h3>连接 RoboNet Wi-Fi</h3><p>在手机或电脑的 Wi-Fi 列表中选择 Cudy 提供的 <b>RoboNet</b>，输入密码 <b>node123456</b>。</p></div></li>
+            <li><span class="step-no">02</span><div><h3>打开 Cudy 的 OpenWrt 管理页</h3><p>浏览器访问 <a href="http://192.168.124.1">192.168.124.1</a>，进入“网络 → 无线”。</p></div></li>
+            <li><span class="step-no">03</span><div><h3>配置上联无线</h3><p>删除其中一条用于外网接入的无线配置，然后扫描并连接上游 Wi-Fi。推荐使用手机热点，按页面提示完成连接。</p></div></li>
+          </ol>
+          <div class="tip"><span class="tip-icon">i</span><p>配置完成后，连接 RoboNet 的设备可同时访问机器狗局域网和外部网络。</p></div>
+        </article>
+        <aside class="caution-card">
+          <div class="caution-icon">!</div><p class="eyebrow">操作前确认</p><h3>保留 RoboNet AP</h3>
+          <p>只处理用于连接上游网络的无线配置。不要删除提供 <b>RoboNet</b> 的 AP 配置，否则设备会断开 Wi-Fi，路由器也可能暂时无法从当前网络访问。</p>
+          <div class="caution-rule"></div>
+          <p class="small-note">如果不确定哪条是上联配置，先核对无线配置的模式与网络名称，再进行删除。</p>
+        </aside>
+      </div>
+      <div class="behavior-note"><span class="note-tag">本设备现象</span><p>目前观察到机器狗重启后需要重新配置上联网络。此说明仅记录这台设备当前的使用现象，不代表所有 OpenWrt 设备都会如此。</p></div>
+      </div>
+    </details>
+
+    <details class="chapter-card" id="ssh">
+      <summary class="chapter-summary">
+        <span class="chapter-number">04</span>
+        <span class="chapter-thumbnail thumbnail-ssh"><span class="terminal-thumb" aria-hidden="true"><span>ssh</span><b>↗</b></span></span>
+        <span class="chapter-copy"><span class="chapter-kicker">REMOTE ACCESS</span><span class="chapter-title" role="heading" aria-level="3">SSH 连接</span><span class="chapter-description">unitree@192.168.123.18</span></span>
+        <span class="chapter-meta">终端接入</span>
+        <span class="fold-icon" aria-hidden="true"></span>
+      </summary>
+      <div class="chapter-content">
+        <p class="chapter-intro">先连接 RoboNet，再通过下方地址登录机器狗终端。192.168.124.1 是 Cudy 路由器的管理地址，机器狗 SSH 地址为 192.168.123.18。</p>
+      <article class="operation-card ssh-card">
+        <div class="operation-card-head"><div><span class="op-icon">$_</span><div><h3>机器狗终端连接信息</h3><p>实验室提供的本机账号与地址。</p></div></div><span class="note-tag">本机配置</span></div>
+        <div class="ssh-details ssh-credentials"><div><span>SSH 地址</span><b>192.168.123.18</b><button class="copy" data-copy="192.168.123.18" aria-label="复制 SSH 地址">复制</button></div><div><span>用户名</span><b>unitree</b><button class="copy" data-copy="unitree" aria-label="复制 SSH 用户名">复制</button></div><div><span>密码</span><b>1</b><button class="copy" data-copy="1" data-copy-label="SSH 密码" aria-label="复制 SSH 密码">复制</button></div></div>
+        <div class="command-template"><span>在终端执行</span><code>ssh unitree@192.168.123.18</code><button class="copy command-copy" data-copy="ssh unitree@192.168.123.18" aria-label="复制 SSH 命令">复制命令</button></div>
+        <p class="ssh-help">出现密码提示后输入 <b>1</b> 并回车。终端输入密码时通常不显示字符。</p>
+      </article>
+      </div>
+    </details>
+
+    <details class="chapter-card" id="records">
+      <summary class="chapter-summary">
+        <span class="chapter-number">05</span>
+        <span class="chapter-thumbnail thumbnail-records"><img src="assets/go2-edu-mounting-dimensions.png" alt="Go2 安装孔位原图" loading="lazy"></span>
+        <span class="chapter-copy"><span class="chapter-kicker">HARDWARE</span><span class="chapter-title" role="heading" aria-level="3">硬件接口与孔位</span><span class="chapter-description">背部接口 · 安装尺寸 · 原始图纸</span></span>
+        <span class="chapter-meta">硬件资料</span>
+        <span class="fold-icon" aria-hidden="true"></span>
+      </summary>
+      <div class="chapter-content">
+        <p class="chapter-intro">依据宇树 Go2 EDU 用户手册整理机身接口与安装尺寸。原始图纸保存在本地，可点击放大查看。</p>
+      <article class="operation-card hardware-card" id="body-ports">
+        <div class="operation-card-head"><div><span class="op-icon">⌘</span><div><h3>机身背部接口</h3><p>位于机身背部中央，见厂家接口位置图。</p></div></div><span class="note-tag">EDU 手册 · 第 7 页</span></div>
+        <div class="hardware-port-layout">
+          <figure class="hardware-figure body-port-figure"><a href="assets/go2-edu-body-interfaces.png" target="_blank" rel="noopener"><img src="assets/go2-edu-body-interfaces.png" alt="宇树 Go2 EDU 背部电源、RJ45 以太网和 SBUS 接口原始位置图" loading="lazy"></a><figcaption>厂家接口示意图 · 点击放大</figcaption></figure>
+          <div class="manual-table-wrap"><table class="manual-table"><caption class="sr-only">Go2 EDU 机身背部接口定义</caption><thead><tr><th scope="col">接口</th><th scope="col">用途与定义</th></tr></thead><tbody><tr><th scope="row">RJ45 以太网</th><td>连接用户电脑或 Orin 拓展坞，接入机器狗局域网。</td></tr><tr><th scope="row">电源输出</th><td>手册标注 DC 28.8V，连接 Orin 模组的 BAT 输入；实际电压随电池变化。</td></tr><tr><th scope="row">SBUS</th><td>通用遥控器通信接口。按原图朝向从左到右为 <code>NC / GND / SBUS</code>，此口不提供电源输出。</td></tr></tbody></table><div class="hardware-note"><b>供电口辨识</b><p>机身背部输出是电池电压，接设备前核对其输入电压范围；5V / 12V 输出见下方拓展坞接口图。</p></div></div>
+        </div>
+      </article>
+      <article class="operation-card hardware-card" id="mounting-points">
+        <div class="operation-card-head"><div><span class="op-icon">⊞</span><div><h3>背部负载安装孔位</h3><p>尺寸摘录自 Go2 EDU 厂家原图，单位均为 mm。</p></div></div><span class="note-tag">EDU 手册 · 第 5 页</span></div>
+        <div class="hardware-note installed-note"><b>本机占用记录 · Odin1 已安装</b><p>背部最前方的 4 个孔位已用于固定外置 Odin1 传感器。此位置由实验室提供；支架转接孔距、螺钉规格与传感器相对机身的外参尚未记录。<a href="#odin1">查看外置传感器说明 →</a></p></div>
+        <figure class="hardware-figure mounting-figure"><a href="assets/go2-edu-mounting-dimensions.png" target="_blank" rel="noopener"><img src="assets/go2-edu-mounting-dimensions.png" alt="Go2 EDU 俯视安装孔位尺寸原图，标注背部横向 58 mm、相邻孔组纵向 150.88 和 131 mm，以及前部孔位尺寸" loading="lazy"></a><figcaption>图中机头朝左 · 保留原始尺寸线及定位基准 · 点击放大</figcaption></figure>
+        <div class="mounting-summary"><div><span>背部内侧孔组横向间距</span><strong>58.00 <small>mm</small></strong></div><div><span>背部相邻孔组纵向间距</span><strong>150.88 / 131.00 <small>mm</small></strong></div><div><span>头部两列孔纵向错位</span><strong>11.00 <small>mm</small></strong></div></div>
+        <div class="manual-table-wrap"><table class="manual-table"><caption class="sr-only">Go2 EDU 孔位尺寸摘录</caption><thead><tr><th scope="col">原图位置</th><th scope="col">尺寸 / mm</th><th scope="col">读取说明</th></tr></thead><tbody><tr><th scope="row">背部内侧三组孔</th><td>58.00；150.88；131.00</td><td>三组左右成对孔；58.00 为横向孔距，后两项为相邻组的纵向孔距。</td></tr><tr><th scope="row">头部两列孔</th><td>13.30；26.45；11.00</td><td>两列分别对应 13.30 / 26.45 的横向间距，纵向相差 11.00。</td></tr><tr><th scope="row">其他定位标注</th><td>6.58；93.46；107.82；74.00</td><td>对应的孔、尺寸线与基准见原图。</td></tr></tbody></table></div>
+        <div class="hardware-note"><b>选配紧固件</b><p>此原图未标注螺纹直径、螺距与有效深度。加工支架、选螺钉前复核本机对应孔的螺纹及可用深度，并确认现有附件占用情况。</p></div>
+      </article>
+      <details class="operation-card hardware-card hardware-dock"><summary>Orin 拓展坞接口参考</summary><p class="controller-copy">适用于资料图所示的 Go2 EDU Orin 拓展坞。机身接口与拓展坞接口分别见图，具体端口以所装模组为准。</p><figure class="hardware-figure"><a href="assets/go2-edu-dock-interfaces.png" target="_blank" rel="noopener"><img src="assets/go2-edu-dock-interfaces.png" alt="Go2 EDU Orin 拓展坞两侧接口图，包含 BAT 输入、RJ45、USB-A、USB-C、5V 和 12V 扩展输出" loading="lazy"></a><figcaption>拓展坞接口资料图 · Weston Robot 收录 · 点击放大</figcaption></figure><div class="manual-table-wrap"><table class="manual-table"><caption class="sr-only">图示 Orin 拓展坞接口参考</caption><thead><tr><th scope="col">接口</th><th scope="col">资料图标注</th></tr></thead><tbody><tr><th scope="row">BAT 输入</th><td>16–45V，峰值 60V；用于接机身电源。</td></tr><tr><th scope="row">用户扩展供电</th><td>12V / 3A 与 5V / 3A；USB-A 标注 5V / 1A。</td></tr><tr><th scope="row">RJ45</th><td>分别标注连接 Go2 与用户扩展用途。</td></tr><tr><th scope="row">USB-C</th><td>一侧标注 USB 3.2 / 深度相机，另一侧标注 DP Alt Mode。</td></tr><tr><th scope="row">其他专用口</th><td>GH1.25-4PIN 千兆以太网口（机械臂）、M8 航空接口（雷达）。</td></tr></tbody></table></div></details>
+      <div class="controller-sources"><span>资料来源 · 2026-10-27 查阅</span><a href="https://static1.squarespace.com/static/5e76e0c52a318c0c1a850442/t/6670b6185e6f531946071db4/1718662712134/GO2%2BEdu%2BUser%2BManual.pdf#page=29" target="_blank" rel="noopener noreferrer">宇树 Go2 EDU 手册 · 中文第 5 / 7 页 ↗</a><a href="https://docs.westonrobot.com/robot/quadruped/go2/#electrical-interfaces" target="_blank" rel="noopener noreferrer">接口图与电池输出说明 · Weston Robot ↗</a></div>
+      </div>
+    </details>
+    <details class="chapter-card" id="external-devices">
+      <summary class="chapter-summary">
+        <span class="chapter-number">06</span>
+        <span class="chapter-thumbnail thumbnail-external-devices"><span class="equipment-thumbs"><img src="assets/manifold-odin1-product.webp" alt="" loading="lazy"><img src="assets/livox-mid360-official.jpg" alt="" loading="lazy"></span></span>
+        <span class="chapter-copy"><span class="chapter-kicker">EXPANSION</span><span class="chapter-title" role="heading" aria-level="3">外置设备</span><span class="chapter-description">Odin1 · MID360 · GNSS 天线</span></span>
+        <span class="chapter-meta">3 类设备</span>
+        <span class="fold-icon" aria-hidden="true"></span>
+      </summary>
+      <div class="chapter-content">
+        <p class="chapter-intro">统一查看 Odin1、MID360 与 GNSS 天线的安装状态、接入资料和支架文件。</p>
+    <details class="device-card" id="odin1">
+      <summary class="device-card-summary">
+        <span class="device-cover"><img src="assets/manifold-odin1-product.webp" alt="留形科技 Odin1 官方产品图" loading="lazy"></span>
+        <span class="device-card-identity"><span class="device-card-name" role="heading" aria-level="4" id="odin1-heading">Odin1</span><span class="device-status is-installed">已安装</span></span>
+        <span class="device-toggle"><span class="when-closed">展开详情</span><span class="when-open">收起详情</span><span class="device-chevron" aria-hidden="true">⌄</span></span>
+      </summary>
+      <div class="device-content">
+      <p class="device-intro">实验室在 Go2 背部最前方四个孔位安装了留形科技 Odin1，作为外置 LIVO 感知模组，集成视觉、LiDAR 与 IMU。</p>
+      <div class="odin-overview">
+        <p class="device-image-credit"><a href="https://www.manifoldtech.cn/products/odin1/" target="_blank" rel="noopener noreferrer">留形科技官方产品图 ↗</a><span>非本机安装实拍</span></p>
+        <article class="operation-card odin-overview-copy">
+          <div class="operation-card-head"><div><div><h3>三类传感器，机内融合计算</h3><p>LIVO · LiDAR / Inertial / Visual Odometry</p></div></div><span class="note-tag">官方资料</span></div>
+          <div class="odin-modalities"><div><b>视觉 / RGB</b><p>1600 × 1296 全局曝光相机，输出 RGB 图像。</p></div><div><b>LiDAR / 点云</b><p>深度视场 120° × 90°，输出原始点云或真彩 SLAM 点云。</p></div><div><b>IMU / 惯性</b><p>输出原始惯性数据，参与机内融合与位姿估计。</p></div></div>
+          <div class="hardware-note"><b>内置建图与定位算法</b><p>Odin1 可在设备内部完成融合计算，向主机输出位置、姿态及轨迹；官方提供 Linux SDK 和 ROS 接口。这里记录其公开能力，本机当前启用的算法模式与驱动版本另行登记。</p></div>
+        </article>
+      </div>
+      <article class="operation-card hardware-card" id="odin1-connection">
+        <div class="operation-card-head"><div><span class="op-icon">↔</span><div><h3>供电与数据连接</h3><p>电源和数据分别连接；实际接线以本机装配为准。</p></div></div><span class="note-tag">接入参考</span></div>
+        <div class="odin-connections"><div><span>独立供电</span><strong>稳压电源 → 四芯航空供电口</strong><p>官方接线指南推荐 12 V / 2 A。产品页标注工作电压 9–26 V；接线指南要求直连电源保持 9–24 V，并强调不得超过 26 V。</p></div><div><span>数据传输</span><strong>Odin1 USB-C 3.0 → 主机 USB 3.0</strong><p>官方数据接口为 USB，主机运行 SDK / ROS 驱动读取数据。本机所接主机、USB 端口和启动方式尚未登记。</p></div></div>
+        <div class="source-links"><a href="https://manifoldtechltd.github.io/wiki/odin_series/odin1/2.%20HW%20Description_.html" target="_blank" rel="noopener noreferrer">官方接口与引脚定义 ↗</a><a href="https://manifoldtechltd.github.io/wiki/odin_series/odin1/4.%20Power%20connection.html" target="_blank" rel="noopener noreferrer">官方供电指南 ↗</a></div>
+      </article>
+      <article class="operation-card hardware-card" id="odin1-modes">
+        <div class="card-topline"><span>选择工作模式</span><span class="step-count">ON-DEVICE ALGORITHM</span></div>
+        <div class="manual-table-wrap"><table class="manual-table"><caption class="sr-only">Odin1 官方工作模式与用途</caption><thead><tr><th scope="col">模式</th><th scope="col">用途</th><th scope="col">使用要点</th></tr></thead><tbody><tr><th scope="row">传感器模式</th><td>采集原始传感器数据</td><td>关闭机内算法，用于主机侧算法开发。</td></tr><tr><th scope="row">里程计 · 0</th><td>连续位姿估计</td><td>算法模式下设置 <code>map_mode = 0</code>。</td></tr><tr><th scope="row">建图 · 1</th><td>建立并保存地图</td><td><code>map_mode = 1</code>；保存完成后将地图取回主机。</td></tr><tr><th scope="row">重定位 · 2</th><td>在已有地图中定位</td><td><code>map_mode = 2</code>；需先传入 Odin1 建图模式生成的地图。</td></tr></tbody></table></div>
+        <p class="controller-copy">官方流程要求切换模式前先停止算法，更新配置后再启动；保存地图本身不会停止建图。上述数值是官方接口参数，不表示本机当前设置。</p>
+        <div class="source-links"><a href="https://manifoldtechltd.github.io/wiki/en/odin_series/odin1/6.%20map%20and%20relocalizaiton%20api.html" target="_blank" rel="noopener noreferrer">官方建图与重定位调用流程 ↗</a></div>
+      </article>
+      <details class="operation-card hardware-card hardware-dock"><summary>接入 ROS 与本机配置记录</summary><div class="details-content"><h3>官方驱动入口</h3><p>Ubuntu 快速启动指南提供 USB 识别、权限设置、驱动编译及 ROS 启动流程。接入前按实际 Ubuntu / ROS 版本选择分支；本页未假设机器狗已安装这些驱动。</p><div class="source-links"><a href="https://manifoldtechltd.github.io/wiki/odin_series/odin1/7.%20Odin1%20Quick%20start%20for%20ubuntu.html" target="_blank" rel="noopener noreferrer">Ubuntu 快速启动 ↗</a><a href="https://github.com/manifoldsdk/odin_ros_driver" target="_blank" rel="noopener noreferrer">官方 odin_ros_driver ↗</a></div><h3>坐标系与标定</h3><p>官方分别定义 IMU、LiDAR 和相机坐标系；相机标定与外参应读取本台设备生成的 <code>config/calib.yaml</code>。Odin1 到 Go2 机身的安装外参需按当前支架测量或标定，不能用官方示例替代。</p><h3>待补充的本机记录</h3><p>供电来源与线束、数据连接主机、固件 / 驱动版本、启动命令、启用模式、地图存放位置，以及 Odin1 到机身的外参。</p><div class="source-links"><a href="https://manifoldtechltd.github.io/wiki/odin_series/odin1/5.%20Data%20output_.html" target="_blank" rel="noopener noreferrer">官方数据输出与坐标系说明 ↗</a><a href="https://manifoldtechltd.github.io/wiki/odin_series/odin1/3.%20Installation%20Guide_.html" target="_blank" rel="noopener noreferrer">安装尺寸与 STP 数模 ↗</a></div></div></details>
+      <div class="controller-sources"><span>资料核对 · 2026-10-27</span><a href="https://www.manifoldtech.cn/products/odin1/" target="_blank" rel="noopener noreferrer">留形科技 Odin1 产品页 ↗</a><span>安装位置：实验室提供 · 设备能力：厂家文档</span></div>
+
+      </div>
+    </details>
+    <details class="device-card" id="mid360">
+      <summary class="device-card-summary">
+        <span class="device-cover"><img src="assets/livox-mid360-official.jpg" alt="Livox MID-360 官方产品图" loading="lazy"></span>
+        <span class="device-card-identity"><span class="device-card-name" role="heading" aria-level="4" id="mid360-heading">MID360</span><span class="device-status is-pending">缺安装保护架</span></span>
+        <span class="device-toggle"><span class="when-closed">展开详情</span><span class="when-open">收起详情</span><span class="device-chevron" aria-hidden="true">⌄</span></span>
+      </summary>
+      <div class="device-content">
+      <p class="device-intro">可接入 Livox MID-360 激光雷达。目前暂缺安装保护架，作为待完成机械安装的扩展设备记录。</p>
+      <div class="extension-overview">
+        <p class="device-image-credit"><a href="https://www.livoxtech.com/cn/mid-360" target="_blank" rel="noopener noreferrer">Livox 官方产品图 ↗</a><span>非本机安装实拍</span></p>
+        <article class="operation-card">
+          <div class="operation-card-head"><div><div><h3>三维点云与 IMU</h3><p>接入参考依据 Livox 官方规格与驱动文档。</p></div></div><span class="pending-badge">缺安装保护架</span></div>
+          <div class="manual-table-wrap"><table class="manual-table"><caption class="sr-only">MID360 接入参考</caption><tbody><tr><th scope="row">感知范围</th><td>水平 360°，垂直 −7°～52°。</td></tr><tr><th scope="row">输出</th><td>点云 20 万点／秒；内置 ICM40609 IMU。</td></tr><tr><th scope="row">数据连接</th><td>100 BASE-TX 以太网，连接运行驱动的主机。</td></tr><tr><th scope="row">设备尺寸</th><td>65 × 65 × 60 mm，约 265 g。</td></tr></tbody></table></div>
+          <div class="hardware-note"><b>当前待办</b><p>准备匹配的安装／保护架，再确定固定位置与接线。传感器 IP、供电线束和主机配置尚未登记。</p></div>
+          <div class="source-links"><a href="https://www.livoxtech.com/cn/mid-360/specs" target="_blank" rel="noopener noreferrer">官方规格 ↗</a><a href="https://github.com/Livox-SDK/livox_ros_driver2" target="_blank" rel="noopener noreferrer">官方 ROS / ROS 2 驱动 ↗</a></div>
+        </article>
+      </div>
+
+      </div>
+    </details>
+
+    <details class="device-card" id="gnss">
+      <summary class="device-card-summary">
+        <span class="device-cover"><img src="assets/gnss-hbase-v03/drawing-v03-1.png" alt="GNSS 大天线支架原始 CAD 设计图，非打印成品照片" loading="lazy"></span>
+        <span class="device-card-identity"><span class="device-card-name" role="heading" aria-level="4" id="gnss-heading">GNSS 天线</span><span class="device-status is-pending">大天线支架尚未 3D 打印</span></span>
+        <span class="device-toggle"><span class="when-closed">展开详情</span><span class="when-open">收起详情</span><span class="device-chevron" aria-hidden="true">⌄</span></span>
+      </summary>
+      <div class="device-content">
+      <p class="device-intro">小型天线可粘贴固定；大型天线已准备专用支架设计，尚未 3D 打印。以下为实验室提供的固定方式与支架文件。</p>
+      <div class="antenna-options">
+        <article class="operation-card"><div class="operation-card-head"><div><div><h3>小型天线</h3><p>轻量粘贴固定</p></div></div><span class="note-tag">安装方案</span></div><p class="controller-copy">小型 GNSS 天线可直接粘贴固定，具体位置按实际布置选择。</p></article>
+        <article class="operation-card"><div class="operation-card-head"><div><div><h3>大型天线</h3><p>H 形一体增高底座 · v0.3</p></div></div><span class="pending-badge">尚未 3D 打印</span></div><p class="controller-copy">已准备专用底座的 CAD 设计文件，用于大型 GNSS 天线安装。目前仍是设计文件，尚未 3D 打印。</p></article>
+      </div>
+      <article class="operation-card hardware-card" id="gnss-bracket">
+        <div class="operation-card-head"><div><span class="op-icon">⊞</span><div><h3>大天线支架 · Go2 GNSS H-base v0.3</h3><p>下图直接来自用户提供的设计包；图示为 CAD 模型。</p></div></div><span class="pending-badge">设计已准备 · 未打印</span></div>
+        <div class="hardware-note"><b>图纸致谢</b><p>感谢 Li-Ta Hsu 老师课题组的翟伟伟提供本支架图纸。</p></div>
+        <figure class="hardware-figure gnss-drawing"><a href="assets/gnss-hbase-v03/Go2_GNSS_Hbase_concept_v03.pdf" target="_blank" rel="noopener"><img src="assets/gnss-hbase-v03/drawing-v03-1.png" alt="用户提供的 GNSS H 形一体底座 v0.3 原始设计图，含正面、底面和尺寸说明；尚未 3D 打印" loading="lazy" width="1800" height="1273"></a><figcaption>设计图第 1 页 · 点击查看完整两页 PDF · 非打印成品照片</figcaption></figure>
+        <div class="manual-table-wrap"><table class="manual-table"><caption class="sr-only">所提供 GNSS 支架设计参数</caption><thead><tr><th scope="col">设计项</th><th scope="col">附件标注 / mm</th></tr></thead><tbody><tr><th scope="row">H 形板</th><td>100 × 80，板厚 5。</td></tr><tr><th scope="row">增高结构</th><td>板下柱高 15，总高 20；四脚与板为一体结构。</td></tr><tr><th scope="row">外侧固定孔</th><td>4 × Ø4.5，孔距 76 × 58，用于配合 M4 螺钉连接导轨。</td></tr><tr><th scope="row">内侧保留孔</th><td>4 × Ø4.5，32 × 32 方阵。</td></tr><tr><th scope="row">中央天线接口</th><td>Ø11 通孔，供 M10 螺栓穿过；底座本身不攻丝。</td></tr></tbody></table></div>
+        <p class="attachment-note">以上是附件中的设计尺寸。尚未完成打印与实机装配核对；打印材料、工艺与紧固件长度另行确定。</p>
+        <div class="download-grid" aria-label="GNSS 支架文件下载">
+          <a class="download-primary" href="downloads/Go2_GNSS_Hbase_CAD_v03.zip" download><span>完整设计包</span><strong>下载 ZIP <b aria-hidden="true">↓</b></strong><small>原始压缩包 · 含 CAD、图纸与参数</small></a>
+          <a href="assets/gnss-hbase-v03/H_base_integrated_v03.step" download><span>实体模型</span><strong>STEP ↓</strong><small>CAD 编辑与装配</small></a>
+          <a href="assets/gnss-hbase-v03/H_base_integrated_v03.stl" download><span>网格模型</span><strong>STL ↓</strong><small>打印准备与几何预览</small></a>
+          <a href="assets/gnss-hbase-v03/H_base_plan_profile_v03.dxf" download><span>平面轮廓</span><strong>DXF ↓</strong><small>俯视轮廓与孔位</small></a>
+        </div>
+        <details class="gnss-details"><summary>查看孔位尺寸图 · 第 2 页</summary><figure class="hardware-figure"><a href="assets/gnss-hbase-v03/Go2_GNSS_Hbase_concept_v03.pdf#page=2" target="_blank" rel="noopener"><img src="assets/gnss-hbase-v03/drawing-v03-2.png" alt="GNSS H 形底座原始尺寸图，包含 76×58 外孔距、32×32 内孔距和侧视图" loading="lazy" width="1800" height="1273"></a></figure></details>
+        <p class="attachment-note">图纸提供：Li-Ta Hsu 老师课题组 · 翟伟伟。</p>
+        <div class="source-links"><a href="assets/gnss-hbase-v03/Go2_GNSS_Hbase_concept_v03.pdf" target="_blank" rel="noopener">打开完整设计图 PDF ↗</a><a href="assets/gnss-hbase-v03/README_CN.txt" target="_blank" rel="noopener">设计包原始说明 ↗</a></div>
+      </article>
+
+      </div>
+    </details>
+      </div>
+    </details>
+
+    <details class="chapter-card" id="body-data">
+      <summary class="chapter-summary">
+        <span class="chapter-number">07</span>
+        <span class="chapter-thumbnail"><span class="terminal-thumb" aria-hidden="true"><span>DDS</span><b>↗</b></span></span>
+        <span class="chapter-copy"><span class="chapter-kicker">ROBOT DATA &amp; API</span><span class="chapter-title" role="heading" aria-level="3">本体数据与常用指令</span><span class="chapter-description">SDK 选用 · ROS 2 topic · 前置相机 · 高层控制</span></span>
+        <span class="chapter-meta">SDK2 / ROS 2</span><span class="fold-icon" aria-hidden="true"></span>
+      </summary>
+      <div class="chapter-content">
+        <p class="chapter-intro">从机器狗内部电脑读取自带传感器数据，并通过官方高层接口发送常用指令。下列接口已核对宇树官方源码；本机 ROS 版本、已安装路径及实际 topic 列表仍需在终端确认，本页未记录实机运行结果。</p>
+        <nav class="api-guide-nav" aria-label="本体数据操作步骤"><a href="#body-connect">01 连接电脑</a><a href="#body-sdk">SDK 选用与安装</a><a href="#body-state">02 读取数据</a><a href="#body-camera">03 自带相机</a><a href="#body-control">04 常用指令</a><a href="#body-examples">下载示例</a></nav>
+        <article class="operation-card hardware-card" id="body-connect">
+          <div class="operation-card-head"><div><span class="op-icon">01</span><div><h3>连接本体电脑，确认开发环境</h3><p>已提供的 SSH 入口：192.168.123.18 / unitree；密码见 SSH 栏目。</p></div></div><span class="note-tag">先只读检查</span></div>
+          <p class="controller-copy">先连接 RoboNet，再登录机器狗电脑。登录后，选择连接机器人内部网络的网卡运行 DDS / ROS 2 程序；SSH 地址、DDS 网卡名与相机 topic 分别确认。</p>
+          <div class="code-panel"><div class="code-panel-bar"><span>在电脑终端登录</span><button class="copy" data-copy-target="body-connect-cmd" data-copy-label="命令" aria-label="复制在电脑终端登录">复制命令</button></div><pre id="body-connect-cmd"><code>ssh unitree@192.168.123.18</code></pre></div><div class="code-panel"><div class="code-panel-bar"><span>登录后只读检查</span><button class="copy" data-copy-target="body-environment-cmd" data-copy-label="命令" aria-label="复制登录后只读检查">复制命令</button></div><pre id="body-environment-cmd"><code>ip -br -4 addr
+ip route
+printf &#x27;ROS_DISTRO=%s\n&#x27; &quot;${ROS_DISTRO:-未加载}&quot;
+command -v ros2 || true
+python3 -c &quot;import importlib.util; print(&#x27;SDK2:&#x27;, importlib.util.find_spec(&#x27;unitree_sdk2py&#x27;))&quot;</code></pre></div>
+          <p class="controller-copy">从上面的网卡列表确认内部网络接口，然后在当前 Bash 终端设置一次，供后续示例使用。</p><div class="code-panel"><div class="code-panel-bar"><span>设置实际 DDS 网卡</span><button class="copy" data-copy-target="body-interface-cmd" data-copy-label="命令">复制命令</button></div><pre id="body-interface-cmd"><code>read -r -p &quot;输入机器人内部网络的网卡名: &quot; GO2_IFACE
+export GO2_IFACE</code></pre></div>
+          <div class="hardware-note"><b>SSH 可达之后，还需确认 DDS 通信</b><p>RoboNet 的路由访问可用于 SSH，但 DDS 发现可能受网卡、组播与网段影响。建议先在机器狗内部电脑运行示例；从外部电脑直接订阅时，需另行确认 DDS 可达。网卡名不能固定假设为 eth0。</p></div>
+          <details class="api-extra"><summary>已有官方 ROS 2 工作区时：加载通信环境</summary><p class="controller-copy">下面以官方支持的 Humble 环境和默认 DDS domain 0 为例。路径为示例；本机版本或工作区不同，使用对应路径。还未安装时，按官方仓库完成依赖与消息包编译后再运行。</p><div class="code-panel"><div class="code-panel-bar"><span>示例：Ubuntu 22.04 / ROS 2 Humble</span><button class="copy" data-copy-target="body-ros-env-cmd" data-copy-label="命令" aria-label="复制示例：Ubuntu 22.04 / ROS 2 Humble">复制命令</button></div><pre id="body-ros-env-cmd"><code># 前提：已安装 ROS 2、已编译官方 unitree_ros2 工作区
+# 沿用上一步填写的 GO2_IFACE；在每个新终端确认此变量已设置
+source /opt/ros/humble/setup.bash
+source ~/unitree_ros2/cyclonedds_ws/install/setup.bash
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export ROS_DOMAIN_ID=0
+export CYCLONEDDS_URI=&quot;&lt;CycloneDDS&gt;&lt;Domain&gt;&lt;General&gt;&lt;Interfaces&gt;&lt;NetworkInterface name=\&quot;${GO2_IFACE}\&quot; priority=\&quot;default\&quot; multicast=\&quot;default\&quot;/&gt;&lt;/Interfaces&gt;&lt;/General&gt;&lt;/Domain&gt;&lt;/CycloneDDS&gt;&quot;
+ros2 topic list -t</code></pre></div><div class="source-links"><a href="https://github.com/unitreerobotics/unitree_ros2#configuration" target="_blank" rel="noopener noreferrer">官方 ROS 2 安装与网卡设置 ↗</a><a href="https://github.com/unitreerobotics/unitree_sdk2_python#installation" target="_blank" rel="noopener noreferrer">官方 Python SDK2 安装 ↗</a></div></details>
+        </article>
+        <article class="operation-card hardware-card" id="body-sdk">
+          <div class="operation-card-head"><div><span class="op-icon">SDK</span><div><h3>常用 SDK：按开发任务选择</h3><p>三个官方入口，安装和接口说明可分别展开。</p></div></div><span class="note-tag">官方工具</span></div>
+          <p class="controller-copy">本页相机与高层指令脚本使用 Python SDK2；需要接入 RViz、rosbag 或 ROS 2 算法时，再准备官方 ROS 2 消息工作区。编写 C++ 应用可选择 C++ SDK2。按任务选择所需工具即可。</p>
+          <div class="sdk-grid">
+            <details class="sdk-card" id="sdk-python">
+              <summary><span class="sdk-label">PYTHON</span><strong>unitree_sdk2_python</strong><span class="sdk-purpose">相机取图、状态订阅、常用指令</span><span class="sdk-status">本页示例使用 · 展开安装 +</span></summary>
+              <div class="sdk-card-content">
+                <p>Python ≥ 3.8；官方依赖包含 CycloneDDS 0.10.2、NumPy 和 OpenCV。以下为 Ubuntu 开发环境的安装示例；已有 SDK 时先确认路径，避免重复安装。</p>
+                <div class="code-panel"><div class="code-panel-bar"><span>Ubuntu：安装到独立 Python 环境</span><button class="copy" data-copy-target="sdk-python-install" data-copy-label="Python SDK 安装命令">复制命令</button></div><pre id="sdk-python-install"><code>sudo apt install git python3-pip python3-venv
+python3 -m venv --system-site-packages ~/venvs/go2-sdk2
+source ~/venvs/go2-sdk2/bin/activate
+cd ~
+git clone https://github.com/unitreerobotics/unitree_sdk2_python.git
+cd ~/unitree_sdk2_python
+python3 -m pip install -e .</code></pre></div>
+                <p>新终端先激活同一个环境。若出现 <code>Could not locate cyclonedds</code>，按官方 FAQ 编译相应 CycloneDDS 并设置 <code>CYCLONEDDS_HOME</code>。使用本页 ROS 2 图像桥接时，还需加载 ROS 2 环境，并确保虚拟环境的 Python 版本与系统 ROS 2 匹配；<code>rclpy</code> 不随 SDK2 安装。</p>
+                <div class="source-links"><a href="https://github.com/unitreerobotics/unitree_sdk2_python" target="_blank" rel="noopener noreferrer">官方仓库 / 安装 FAQ ↗</a><a href="https://github.com/unitreerobotics/unitree_sdk2_python/tree/master/example/go2" target="_blank" rel="noopener noreferrer">Go2 专用示例目录 ↗</a></div>
+              </div>
+            </details>
+            <details class="sdk-card" id="sdk-cpp">
+              <summary><span class="sdk-label">C++</span><strong>unitree_sdk2</strong><span class="sdk-purpose">C++ 应用、工程集成与高层服务</span><span class="sdk-status">CMake 工程 · 展开编译 +</span></summary>
+              <div class="sdk-card-content">
+                <p>官方预编译环境为 Ubuntu 20.04、GCC 9.4.0，提供 aarch64 与 x86_64 库。下方只构建 SDK 示例；二进制与实际主机架构、系统兼容性需对应确认。</p>
+                <div class="code-panel"><div class="code-panel-bar"><span>Ubuntu：获取依赖并编译</span><button class="copy" data-copy-target="sdk-cpp-install" data-copy-label="C++ SDK 编译命令">复制命令</button></div><pre id="sdk-cpp-install"><code>sudo apt install git cmake g++ build-essential libyaml-cpp-dev libeigen3-dev libboost-all-dev libfmt-dev
+cd ~
+git clone https://github.com/unitreerobotics/unitree_sdk2.git
+cd ~/unitree_sdk2
+mkdir -p build
+cd build
+cmake ..
+cmake --build . -j2</code></pre></div>
+                <p>构建后的程序位于 <code>build/bin/</code>。项目集成及安装前缀参考官方 README；Go2 示例从 <code>example/go2/</code> 进入，运行前先查看所选程序会执行的动作。</p>
+                <div class="source-links"><a href="https://github.com/unitreerobotics/unitree_sdk2" target="_blank" rel="noopener noreferrer">官方仓库 / 工程集成 ↗</a><a href="https://github.com/unitreerobotics/unitree_sdk2/tree/main/example/go2" target="_blank" rel="noopener noreferrer">Go2 C++ 示例目录 ↗</a></div>
+              </div>
+            </details>
+            <details class="sdk-card" id="sdk-ros2">
+              <summary><span class="sdk-label">ROS 2</span><strong>unitree_ros2</strong><span class="sdk-purpose">topic、RViz、rosbag 与算法节点</span><span class="sdk-status">消息与通信工作区 · 展开入口 +</span></summary>
+              <div class="sdk-card-content">
+                <p>官方仓库提供机器人消息包、CycloneDDS 配置与示例，通过 DDS 与机器人通信。README 列出 Ubuntu 20.04 / Foxy、Ubuntu 22.04 / Humble，并推荐 Humble；本机版本尚未登记。</p>
+                <p>从官方安装流程准备 ROS 2、<code>rmw_cyclonedds_cpp</code> 和 <code>cyclonedds_ws</code>，再使用上方“连接电脑”中的环境设置。核心消息包为 <code>unitree_go</code> 与 <code>unitree_api</code>。只使用本页纯 Python 取图或指令脚本时，无需先安装 ROS 2。</p>
+                <p>已有 ROS 1 算法不能直接照搬本页 <code>ros2</code> 命令；需要相应版本的驱动或另行配置桥接。</p>
+                <div class="source-links"><a href="https://github.com/unitreerobotics/unitree_ros2#installation" target="_blank" rel="noopener noreferrer">官方安装与编译流程 ↗</a><a href="#body-connect">本页 DDS 环境设置 →</a><a href="#body-state">状态 topic 与 rosbag →</a></div>
+              </div>
+            </details>
+          </div>
+          <details class="api-extra" id="sdk-api-index"><summary>常用 Python 接口速查：状态、相机、动作、灯光 / 音量</summary>
+            <p class="controller-copy">以下均来自官方 SDK2。通信入口 <code>ChannelFactoryInitialize(0, GO2_IFACE)</code> 中的第二项填写实际网卡名；RPC 客户端按对应示例设置超时并调用 <code>Init()</code>。</p>
+            <div class="manual-table-wrap"><table class="manual-table"><caption class="sr-only">Go2 常用 Python SDK2 接口索引</caption><thead><tr><th scope="col">用途</th><th scope="col">类 / 常用方法</th><th scope="col">源码与本页说明</th></tr></thead><tbody>
+              <tr><th scope="row">订阅机器人状态</th><td><code>ChannelSubscriber</code><br><code>unitree_sdk2py.core.channel</code><br>DDS topic 示例：<code>rt/lowstate</code></td><td><a href="https://github.com/unitreerobotics/unitree_sdk2_python/blob/master/unitree_sdk2py/core/channel.py" target="_blank" rel="noopener noreferrer">官方通信接口 ↗</a><br><a href="#body-state">数据类型与 topic →</a></td></tr>
+              <tr><th scope="row">前置相机</th><td><code>VideoClient.GetImageSample()</code><br><code>unitree_sdk2py.go2.video.video_client</code></td><td><a href="https://github.com/unitreerobotics/unitree_sdk2_python/blob/master/unitree_sdk2py/go2/video/video_client.py" target="_blank" rel="noopener noreferrer">官方源码 ↗</a><br><a href="#body-camera">保存图像 / 发布 ROS 图像 →</a></td></tr>
+              <tr><th scope="row">高层运动</th><td><code>SportClient</code><br><code>StopMove / StandUp / StandDown / Move</code><br><code>unitree_sdk2py.go2.sport.sport_client</code></td><td><a href="https://github.com/unitreerobotics/unitree_sdk2_python/blob/master/unitree_sdk2py/go2/sport/sport_client.py" target="_blank" rel="noopener noreferrer">官方源码 ↗</a><br><a href="#body-control">常用指令与执行方式 →</a></td></tr>
+              <tr><th scope="row">灯光与音量</th><td><code>VuiClient</code><br><code>GetBrightness / SetBrightness</code><br><code>GetVolume / SetVolume</code><br><code>unitree_sdk2py.go2.vui.vui_client</code></td><td><a href="https://github.com/unitreerobotics/unitree_sdk2_python/blob/master/unitree_sdk2py/go2/vui/vui_client.py" target="_blank" rel="noopener noreferrer">官方源码 ↗</a><br><a href="https://github.com/unitreerobotics/unitree_sdk2_python/blob/master/example/vui_client/vui_client_example.py" target="_blank" rel="noopener noreferrer">官方示例（会修改设置）↗</a></td></tr>
+            </tbody></table></div>
+          </details>
+          <details class="api-extra" id="sdk-sensors"><summary>外置设备驱动：Odin1 / MID360</summary>
+            <div class="api-method-grid"><div><span>ODIN1 · 已安装</span><h4>odin_ros_driver</h4><p>留形科技官方 ROS 1 / ROS 2 驱动，用于接收 Odin1 数据与建图定位输出。按驱动要求匹配设备固件；本机启用模式与驱动版本尚未登记。</p><div class="source-links"><a href="https://github.com/manifoldsdk/odin_ros_driver" target="_blank" rel="noopener noreferrer">官方驱动 / 编译与启动 ↗</a><a href="#odin1">安装位置与设备说明 →</a></div></div><div><span>MID360 · 缺安装保护架</span><h4>livox_ros_driver2</h4><p>Livox 官方 ROS / ROS 2 驱动，需先构建 Livox-SDK2。接入时按实际雷达与主机地址配置 MID360 文件；当前尚未作为本机已安装设备登记。</p><div class="source-links"><a href="https://github.com/Livox-SDK/livox_ros_driver2" target="_blank" rel="noopener noreferrer">官方驱动 / MID360 配置 ↗</a><a href="https://github.com/Livox-SDK/Livox-SDK2" target="_blank" rel="noopener noreferrer">Livox-SDK2 ↗</a><a href="#mid360">设备状态 →</a></div></div></div>
+            <p class="controller-copy">GNSS 天线本身不决定驱动；接收机型号、输出协议与接入主机确认后，再补对应 SDK 或 ROS 驱动。</p>
+          </details>
+          <div class="hardware-note"><b>下载时确认 SDK 代际与机器人型号</b><p>Go2 本页使用 SDK2。旧 <code>unitree_legged_sdk</code> 的当前 Go1 分支采用 UDP，官方列出的支持型号为 Go1；不能将其示例直接套到这里。SDK2 仓库也包含其他型号示例，请选择 <code>go2</code> 目录。部分 README 的示例路径已变化，以上链接按当前仓库目录核对。</p><a href="https://github.com/unitreerobotics/unitree_legged_sdk/tree/go1" target="_blank" rel="noopener noreferrer">旧版 Go1 SDK 适用范围 ↗</a></div>
+        </article>
+        <article class="operation-card hardware-card" id="body-state">
+          <div class="operation-card-head"><div><span class="op-icon">02</span><div><h3>查看自带数据与 topic</h3><p>先发现，再查看类型、发布节点和实际内容。</p></div></div><span class="note-tag">只读</span></div>
+          <div class="manual-table-wrap"><table class="manual-table"><caption class="sr-only">Go2 官方状态接口</caption><thead><tr><th scope="col">数据</th><th scope="col">ROS 2 接口</th><th scope="col">可读取的内容</th></tr></thead><tbody><tr><th scope="row">运动状态</th><td><code>/sportmodestate</code><br><code>/lf/sportmodestate</code></td><td><code>unitree_go/msg/SportModeState</code>：机身位置、速度、姿态 IMU、步态及足端状态。</td></tr><tr><th scope="row">底层状态</th><td><code>/lowstate</code><br><code>/lf/lowstate</code></td><td><code>unitree_go/msg/LowState</code>：IMU、关节角度／角速度／估计力矩、电源与电池数据。</td></tr><tr><th scope="row">遥控器状态</th><td><code>/wirelesscontroller</code></td><td><code>unitree_go/msg/WirelessController</code>：摇杆和按键状态。</td></tr><tr><th scope="row">相机／点云</th><td>先用类型查询实际名称</td><td>标准图像查 <code>sensor_msgs/msg/Image</code>；标准点云查 <code>sensor_msgs/msg/PointCloud2</code>，是否存在取决于本机发布服务。</td></tr></tbody></table></div>
+          <div class="code-panel"><div class="code-panel-bar"><span>ROS 2：查看数据与发布端</span><button class="copy" data-copy-target="body-state-cmd" data-copy-label="命令" aria-label="复制ROS 2：查看数据与发布端">复制命令</button></div><pre id="body-state-cmd"><code>ros2 topic list -t
+ros2 topic info /sportmodestate -v
+ros2 topic echo /sportmodestate --once --qos-reliability best_effort
+ros2 topic echo /lowstate --once --qos-reliability best_effort</code></pre></div>
+          <p class="controller-copy">如只发现 <code>/lf/…</code>，将命令替换为对应 topic。SDK2 原生 DDS 名称常带 <code>rt/</code>，例如 <code>rt/lowstate</code>；ROS 2 命令使用实际发现的 ROS topic 名称。运动状态中的位置属于里程计坐标，不能直接当作 GNSS 经纬度。</p>
+          <details class="api-extra"><summary>记录状态数据到 rosbag</summary><p class="controller-copy">以下名称需先确认存在；相机桥接启动后，也可把它的图像 topic 加入记录命令。</p><div class="code-panel"><div class="code-panel-bar"><span>记录实际存在的状态 topic</span><button class="copy" data-copy-target="body-record-cmd" data-copy-label="命令" aria-label="复制记录实际存在的状态 topic">复制命令</button></div><pre id="body-record-cmd"><code>ros2 bag record -o go2_state /sportmodestate /lowstate
+# Ctrl+C 结束；之后查看记录信息
+ros2 bag info go2_state</code></pre></div></details>
+          <div class="source-links"><a href="https://github.com/unitreerobotics/unitree_ros2#state-acquisition" target="_blank" rel="noopener noreferrer">官方状态采集说明 ↗</a><a href="https://github.com/unitreerobotics/unitree_ros2/blob/master/cyclonedds_ws/src/unitree/unitree_go/msg/LowState.msg" target="_blank" rel="noopener noreferrer">LowState 消息定义 ↗</a><a href="https://github.com/unitreerobotics/unitree_ros2/blob/master/cyclonedds_ws/src/unitree/unitree_go/msg/SportModeState.msg" target="_blank" rel="noopener noreferrer">SportModeState 消息定义 ↗</a></div>
+        </article>
+        <article class="operation-card hardware-card" id="body-camera">
+          <div class="operation-card-head"><div><span class="op-icon">03</span><div><h3>获取 Go2 自带前置相机</h3><p>区分实际已发布的 ROS 图像与 SDK2 videohub 取图。</p></div></div><span class="note-tag">相机数据</span></div>
+          <p class="controller-copy">先查询本机已有的图像 topic，并用 <code>ros2 topic info 实际名称 -v</code> 核对发布节点。若没有标准图像 topic，使用官方 <code>VideoClient.GetImageSample()</code> 获取前置相机样本；无需先找到一个预设的 ROS 相机名称。</p>
+          <div class="code-panel"><div class="code-panel-bar"><span>先查实际图像 topic</span><button class="copy" data-copy-target="body-camera-find-cmd" data-copy-label="命令" aria-label="复制先查实际图像 topic">复制命令</button></div><pre id="body-camera-find-cmd"><code>ros2 topic find sensor_msgs/msg/Image
+ros2 topic find sensor_msgs/msg/CompressedImage
+ros2 topic find unitree_go/msg/Go2FrontVideoData
+# 同时查看发布节点，区分 Go2 自带相机和 Odin1 等外置相机
+ros2 topic list -t</code></pre></div>
+          <p class="controller-copy">如果发现 <code>/frontvideostream</code>，先核对消息类型；官方 <code>Go2FrontVideoData</code> 包含时间字段和多路视频字节数组，并非标准 <code>sensor_msgs/msg/Image</code>。本页不直接将这些视频字节当作 JPEG 解码，取图采用下方官方 SDK 接口。</p><div class="api-method-grid"><div><span>方法 A · 纯 SSH</span><h4>保存一张图，再取回电脑</h4><p>适用于无桌面的本体电脑。示例将 SDK 返回的图像保存为文件，不打开远程窗口。</p></div><div><span>方法 B · 需要 ROS 图像时</span><h4>启动示例桥接节点</h4><p>读取同一个官方 SDK 接口，解码后发布标准 Image，供图像查看和 rosbag 使用。</p></div></div>
+          <div class="code-panel"><div class="code-panel-bar"><span>SDK2：无桌面也能保存一张图片</span><button class="copy" data-copy-target="body-camera-capture-cmd" data-copy-label="命令" aria-label="复制SDK2：无桌面也能保存一张图片">复制命令</button></div><pre id="body-camera-capture-cmd"><code># 假定示例包已放到 ~/go2-body-examples，SDK2 已安装
+cd ~/go2-body-examples
+python3 go2_camera.py --interface &quot;$GO2_IFACE&quot; --output go2_front.jpg</code></pre></div><div class="code-panel"><div class="code-panel-bar"><span>在自己的电脑下载图片</span><button class="copy" data-copy-target="body-camera-scp-cmd" data-copy-label="命令" aria-label="复制在自己的电脑下载图片">复制命令</button></div><pre id="body-camera-scp-cmd"><code>scp unitree@192.168.123.18:~/go2-body-examples/go2_front.jpg .</code></pre></div>
+          <details class="api-extra"><summary>需要 ROS 2 相机 topic：启动桥接示例</summary><div class="code-panel"><div class="code-panel-bar"><span>可选：把 SDK 相机图像发布为 ROS 2 topic</span><button class="copy" data-copy-target="body-camera-bridge-cmd" data-copy-label="命令" aria-label="复制可选：把 SDK 相机图像发布为 ROS 2 topic">复制命令</button></div><pre id="body-camera-bridge-cmd"><code># 在已加载 ROS 2 环境的本体电脑终端运行
+python3 go2_camera.py --interface &quot;$GO2_IFACE&quot; --ros2
+# 在有图形桌面的另一个 ROS 2 终端运行，再选择图像 topic
+ros2 run rqt_image_view rqt_image_view</code></pre></div><div class="hardware-note"><b>本示例创建的 topic</b><p><code>/lab/go2/front_camera/image_raw</code>，类型 <code>sensor_msgs/msg/Image</code>，BGR8；它是本页示例发布的名称。默认请求 5 Hz，时间戳为主机接收时刻；不提供硬件同步时间、CameraInfo 或相机到机身的标定 TF。</p></div><p class="controller-copy">图像查看器在有图形桌面的 Ubuntu 终端运行；从另一台电脑查看时，仍需满足 DDS 发现条件。Go2 自带相机与 Odin1 的 RGB 相机分别属于不同设备。</p></details>
+          <div class="source-links"><a href="https://github.com/unitreerobotics/unitree_sdk2_python/blob/master/example/go2/front_camera/capture_image.py" target="_blank" rel="noopener noreferrer">官方前置相机保存示例 ↗</a><a href="https://github.com/unitreerobotics/unitree_sdk2_python/blob/master/unitree_sdk2py/go2/video/video_client.py" target="_blank" rel="noopener noreferrer">VideoClient 接口源码 ↗</a><a href="https://github.com/unitreerobotics/unitree_ros2/blob/master/cyclonedds_ws/src/unitree/unitree_go/msg/Go2FrontVideoData.msg" target="_blank" rel="noopener noreferrer">官方视频消息定义 ↗</a></div>
+        </article>
+        <article class="operation-card hardware-card" id="body-control">
+          <div class="operation-card-head"><div><span class="op-icon">04</span><div><h3>下发常用高层指令</h3><p>使用官方 SportClient 或 ROS 2 请求接口。</p></div></div><span class="pending-badge">执行会影响实机</span></div>
+          <p class="controller-copy">先确认官方高层运动服务可用、当前允许机器狗动作，并保留遥控器接管。下列方法是高层接口；本栏示例使用 SDK2 发送请求。</p>
+          <div class="manual-table-wrap"><table class="manual-table"><caption class="sr-only">Go2 常用高层控制接口</caption><thead><tr><th scope="col">操作</th><th scope="col">SDK2 方法</th><th scope="col">API ID</th></tr></thead><tbody><tr><th scope="row">停止速度运动</th><td><code>StopMove()</code></td><td>1003</td></tr><tr><th scope="row">站起</th><td><code>StandUp()</code></td><td>1004</td></tr><tr><th scope="row">趴下</th><td><code>StandDown()</code></td><td>1005</td></tr><tr><th scope="row">平衡站立</th><td><code>BalanceStand()</code></td><td>1002</td></tr><tr><th scope="row">速度移动</th><td><code>Move(vx, vy, vyaw)</code><br>纵向／横向：m/s；偏航：rad/s</td><td>1008</td></tr></tbody></table></div>
+          <p class="controller-copy">在 <code>~/go2-body-examples</code> 目录中，按需要单独复制并执行一条命令：</p><div class="api-command-list"><div class="api-command-row"><div><b>停止速度运动</b><code>python3 go2_command.py --interface &quot;$GO2_IFACE&quot; --action stop</code></div><button class="copy" data-copy="python3 go2_command.py --interface &quot;$GO2_IFACE&quot; --action stop" data-copy-label="停止速度运动命令">复制命令</button></div><div class="api-command-row"><div><b>站起</b><code>python3 go2_command.py --interface &quot;$GO2_IFACE&quot; --action standup</code></div><button class="copy" data-copy="python3 go2_command.py --interface &quot;$GO2_IFACE&quot; --action standup" data-copy-label="站起命令">复制命令</button></div><div class="api-command-row"><div><b>趴下</b><code>python3 go2_command.py --interface &quot;$GO2_IFACE&quot; --action standdown</code></div><button class="copy" data-copy="python3 go2_command.py --interface &quot;$GO2_IFACE&quot; --action standdown" data-copy-label="趴下命令">复制命令</button></div><div class="api-command-row"><div><b>平衡站立</b><code>python3 go2_command.py --interface &quot;$GO2_IFACE&quot; --action balance</code></div><button class="copy" data-copy="python3 go2_command.py --interface &quot;$GO2_IFACE&quot; --action balance" data-copy-label="平衡站立命令">复制命令</button></div></div>
+          <details class="api-extra"><summary>短时移动示例与停止方式</summary><div class="code-panel"><div class="code-panel-bar"><span>短距离移动示例：0.1 m/s，持续 1 秒</span><button class="copy" data-copy-target="body-move-cmd" data-copy-label="命令" aria-label="复制短距离移动示例：0.1 m/s，持续 1 秒">复制命令</button></div><pre id="body-move-cmd"><code>python3 go2_command.py --interface &quot;$GO2_IFACE&quot; --action move --vx 0.1 --seconds 1</code></pre></div><p class="controller-copy">示例以 20 Hz 请求移动，运行结束或按 Ctrl+C 时尝试发送 <code>StopMove()</code>。脚本将速度和持续时间限制在较小范围，这是示例自身的限制；运动效果仍取决于实机状态。停止速度运动和遥控器的阻尼模式是不同操作。</p></details>
+          <details class="api-extra"><summary>已有 ROS 2 环境：直接发布停止请求</summary><p class="controller-copy">官方入口为 <code>/api/sport/request</code>，消息类型为 <code>unitree_api/msg/Request</code>。通用 <code>/cmd_vel</code> 只有在本机另有转换节点时才会转为官方请求。</p><div class="code-panel"><div class="code-panel-bar"><span>ROS 2：发送一次停止运动请求</span><button class="copy" data-copy-target="body-stop-cmd" data-copy-label="命令" aria-label="复制ROS 2：发送一次停止运动请求">复制命令</button></div><pre id="body-stop-cmd"><code>ros2 topic pub --once /api/sport/request unitree_api/msg/Request   &#x27;{header: {identity: {api_id: 1003}}, parameter: &quot;{}&quot;}&#x27; </code></pre></div><p class="controller-copy">CLI 发布结束不等于已收到机器人响应；需要结合 <code>/api/sport/response</code> 和实际状态判断。日常使用可优先采用附带的 SDK2 示例读取返回码。</p></details>
+          <div class="source-links"><a href="https://github.com/unitreerobotics/unitree_sdk2_python/blob/master/unitree_sdk2py/go2/sport/sport_client.py" target="_blank" rel="noopener noreferrer">官方 SportClient 方法与 API ID ↗</a><a href="https://github.com/unitreerobotics/unitree_ros2/blob/master/example/src/src/common/ros2_sport_client.cpp" target="_blank" rel="noopener noreferrer">官方 ROS 2 请求生成方式 ↗</a></div>
+        </article>
+        <article class="operation-card hardware-card" id="body-examples">
+          <div class="operation-card-head"><div><span class="op-icon">↓</span><div><h3>下载配套示例</h3><p>接口参考已核对；本机尚未运行。脚本需要实际 SDK2 / ROS 2 环境。</p></div></div><span class="note-tag">示例程序</span></div>
+          <div class="download-grid"><a class="download-primary" href="downloads/Go2_body_examples.zip" download><span>完整示例包</span><strong>下载 ZIP ↓</strong><small>脚本与中文说明</small></a><a href="downloads/go2-body-examples/go2_camera.py" download><span>前置相机</span><strong>Python ↓</strong><small>保存图片 / ROS 2 桥接</small></a><a href="downloads/go2-body-examples/go2_command.py" download><span>高层指令</span><strong>Python ↓</strong><small>按参数显式发送操作</small></a><a href="downloads/go2-body-examples/README_CN.txt" target="_blank" rel="noopener"><span>运行说明</span><strong>README ↗</strong><small>依赖、命令与接口边界</small></a></div>
+        </article>
+        <div class="controller-sources"><span>官方资料核对 · 2026-10-27</span><span>本机待补充：系统与 ROS 版本、内部网卡、SDK 安装路径、实际 topic 和发布服务。</span></div>
+      </div>
+    </details>
+    <footer><a class="footer-brand" href="#top">G2 <span>LAB FIELD GUIDE</span></a><span>Unitree Go2 EDU · 实验室设备手册</span><a href="#top">返回顶部 ↑</a></footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite">已复制</div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -33,6 +33,16 @@ button:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px soli
 .brand-copy>span { font-size: 11px; color: var(--muted); letter-spacing: .12em; }
 .topbar-meta { color: #6e796c; font: 10px var(--mono); letter-spacing: .09em; }
 .topbar-meta>span:last-child { color: #a1a491; }
+.topbar-actions { display: flex; align-items: center; gap: 24px; }
+.language-switch { display: inline-flex; padding: 3px; border: 1px solid #d6ddc9; border-radius: 7px; gap: 2px; flex: none; }
+.language-switch button { border: 0; border-radius: 4px; background: transparent; color: var(--muted); padding: 6px 9px; font-size: 10px; cursor: pointer; }
+.language-switch button[aria-pressed="true"] { background: var(--ink); color: var(--white); }
+html[lang="en"] .hero-title { letter-spacing: .015em; }
+html[lang="en"] .chapter-title { letter-spacing: 0; }
+html[lang="en"] .chapter-meta { max-width: 155px; text-align: right; line-height: 1.6; white-space: normal; }
+html[lang="en"] .device-status { max-width: 235px; white-space: normal; line-height: 1.6; }
+@media (max-width: 900px) { .topbar-actions .topbar-meta { display: none; } }
+@media (max-width: 600px) { .topbar-actions { gap: 0; } .language-switch button { padding: 6px 8px; } html[lang="en"] .hero-index { display: none; } html[lang="en"] .chapter-title { font-size: 15px; } html[lang="en"] .device-status { max-width: 155px; } html[lang="en"] .manual-controls { gap: 8px; } html[lang="en"] .manual-controls button { font-size: 9px; } html[lang="en"] .operation-card-head { flex-wrap: wrap; } html[lang="en"] .note-tag, html[lang="en"] .pending-badge { white-space: normal; } }
 .divider { padding-inline: 15px; color: #bdc0af; }
 .hero { min-height: 440px; display: grid; grid-template-columns: 1.08fr 1fr; position: relative; align-items: center; padding-block: 38px 42px; }
 .hero-copy { z-index: 1; }

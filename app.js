@@ -16,9 +16,10 @@ document.querySelectorAll('[data-copy], [data-copy-target]').forEach((button) =>
         : button.dataset.copy;
       if (text === undefined) throw new Error('Copy source not found');
       await navigator.clipboard.writeText(text);
-      showToast(button.dataset.copyLabel ? `已复制${button.dataset.copyLabel}` : `已复制：${text}`);
+      const copied = window.ManualI18n.t('Copied');
+      showToast(`${copied}: ${button.dataset.copyLabel || text}`);
     } catch {
-      showToast('复制失败，请手动选择内容');
+      showToast(window.ManualI18n.t('Copy failed; select the text manually.'));
     }
   });
 });

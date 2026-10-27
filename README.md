@@ -1,6 +1,6 @@
 # Unitree Go2 EDU 实验室使用手册
 
-这是一个中文静态网页项目，按常见操作分栏，记录本实验室 Unitree Go2 EDU 的开机、遥控器控制、RoboNet / OpenWrt 网络配置、SSH 连接、硬件接口和安装孔位，以及 Odin1、MID360 与 GNSS 天线安装方案。产品图来自对应厂商，保存在本地 `assets/` 目录，可离线显示；产品图不是实验室实拍。
+这是一个默认英文、可切换中文的静态网页项目，按常见操作分栏，记录本实验室 Unitree Go2 EDU 的开机、遥控器控制、RoboNet / OpenWrt 网络配置、SSH 连接、硬件接口和安装孔位，以及 Odin1、MID360 与 GNSS 天线安装方案。产品图来自对应厂商，保存在本地 `assets/` 目录，可离线显示；产品图不是实验室实拍。
 
 仓库已按实验室要求公开。GitHub Pages 发布密码解密版正文，图片与图纸附件保持公开下载。
 
@@ -56,7 +56,7 @@ python3 -m http.server 8000
 ## GitHub Pages 密码解密版
 
 - 网站：<https://polyu-taslab.github.io/go2-edu-lab-manual/>。
-- 原始 `index.html` 供本地查看和维护；发布时由 StatiCrypt 3.5.4 加密，生成带中文解锁页的 `dist/index.html`。
+- `index.html` 供本地查看；发布时由 StatiCrypt 3.5.4 加密，生成带中英文解锁页的 `dist/index.html`。
 - 按实验室要求，图片、PDF、CAD、ZIP 不加密；公开仓库中的原始源码和历史也可直接查看。
 - Pages 仅部署 `dist/`，不直接发布原始首页。访问密码由仓库 Actions secret `STATICRYPT_PASSWORD` 提供。
 - 更新 `main` 后，GitHub Actions 自动构建并部署。
@@ -82,3 +82,11 @@ python3 -m http.server 8000
 - `#sdk-sensors`：Odin1 官方 `odin_ros_driver`，以及 MID360 的 `livox_ros_driver2` / Livox-SDK2；与外置设备安装状态相互链接。
 - 区分旧 Go1 UDP `unitree_legged_sdk` 与 Go2 SDK2；GNSS 驱动待接收机型号与协议确认后补充。
 - 官方资料查阅日期：2026-10-27。版本与实际设备服务仍需对应确认，不将仓库支持能力写成本机已安装状态。
+
+## 中英文与内容维护
+
+- 首次访问默认英文，不根据浏览器语言自动切换。解锁页与手册右上角均有 English / 中文开关，浏览器会记住选择；存储不可用时仍可当页切换。
+- 翻译覆盖正文、导航、状态、按钮、图片替代文本、命令注释和复制提示。切换直接更新文本，保留当前展开状态。技术标识符、账号、IP、链接及原始图纸不变。
+- `content/manual.zh.html` 为中文内容源，`locales/en.json` 为英文翻译；修改后运行 `npm run build:manual` 重新生成 `index.html`。不要直接修改生成后的正文。
+- `i18n.js` 负责语言切换。双语文本内嵌在首页中，本地打开无需请求翻译文件；加密发布时随正文一起加密。
+- `npm run build:pages` 自动先生成双语正文，再构建加密版本。下载的原始厂家图纸、CAD 和中文附件保持原样。
