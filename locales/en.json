@@ -581,5 +581,14 @@
   "界面语言": "Interface language",
   "中文": "中文",
   "复制失败，请手动选择内容": "Copy failed; select the text manually.",
-  "已复制命令": "Command copied"
+  "已复制命令": "Command copied",
+  "OpenWrt 管理登录": "OpenWrt dashboard login",
+  "实验室提供的 Cudy 路由器管理凭据，与机器狗 SSH 账号不同。": "Lab-supplied Cudy router credentials, separate from the robot SSH account.",
+  "管理地址": "Dashboard address",
+  "路由器管理地址": "router dashboard address",
+  "路由器管理用户名": "router admin username",
+  "复制路由器管理用户名": "Copy router admin username",
+  "路由器管理密码": "router admin password",
+  "复制路由器管理密码": "Copy router admin password",
+  "，使用本栏的管理账号登录，再进入“网络 → 无线”。": ", sign in with the dashboard credentials above, then open “Network → Wireless” (网络 → 无线)."
 }

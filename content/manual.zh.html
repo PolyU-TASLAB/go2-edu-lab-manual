@@ -124,6 +124,10 @@
       </summary>
       <div class="chapter-content">
         <p class="chapter-intro">实验室自备 Cudy 2×2 MIMO 路由设备，运行 OpenWrt，提供 RoboNet Wi-Fi。接入设备可访问机器狗局域网；配置上联后也可访问外网。</p>
+      <article class="operation-card hardware-card" id="router-login">
+        <div class="operation-card-head"><div><span class="op-icon">↗</span><div><h3>OpenWrt 管理登录</h3><p>实验室提供的 Cudy 路由器管理凭据，与机器狗 SSH 账号不同。</p></div></div><span class="note-tag">本机配置</span></div>
+        <div class="ssh-details ssh-credentials"><div><span>管理地址</span><b><a href="http://192.168.124.1" target="_blank" rel="noopener noreferrer">192.168.124.1 ↗</a></b><button class="copy" data-copy="http://192.168.124.1" data-copy-label="路由器管理地址" aria-label="复制管理地址">复制</button></div><div><span>用户名</span><b>root</b><button class="copy" data-copy="root" data-copy-label="路由器管理用户名" aria-label="复制路由器管理用户名">复制</button></div><div><span>密码</span><b>password</b><button class="copy" data-copy="password" data-copy-label="路由器管理密码" aria-label="复制路由器管理密码">复制</button></div></div>
+      </article>
 
       <div class="topology card">
         <div class="card-topline"><span>连接拓扑</span><span class="live-label">局域网与上游网络</span></div>
@@ -144,7 +148,7 @@
           <div class="card-topline"><span>配置步骤</span><span class="step-count">3 STEPS</span></div>
           <ol class="steps">
             <li><span class="step-no">01</span><div><h3>连接 RoboNet Wi-Fi</h3><p>在手机或电脑的 Wi-Fi 列表中选择 Cudy 提供的 <b>RoboNet</b>，输入密码 <b>node123456</b>。</p></div></li>
-            <li><span class="step-no">02</span><div><h3>打开 Cudy 的 OpenWrt 管理页</h3><p>浏览器访问 <a href="http://192.168.124.1">192.168.124.1</a>，进入“网络 → 无线”。</p></div></li>
+            <li><span class="step-no">02</span><div><h3>打开 Cudy 的 OpenWrt 管理页</h3><p>浏览器访问 <a href="http://192.168.124.1">192.168.124.1</a>，使用本栏的管理账号登录，再进入“网络 → 无线”。</p></div></li>
             <li><span class="step-no">03</span><div><h3>配置上联无线</h3><p>删除其中一条用于外网接入的无线配置，然后扫描并连接上游 Wi-Fi。推荐使用手机热点，按页面提示完成连接。</p></div></li>
           </ol>
           <div class="tip"><span class="tip-icon">i</span><p>配置完成后，连接 RoboNet 的设备可同时访问机器狗局域网和外部网络。</p></div>

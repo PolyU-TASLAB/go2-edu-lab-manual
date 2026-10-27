@@ -517,6 +517,7 @@ footer a { text-decoration: none; color: #93a380; }
 .sdk-status { grid-column: 2; grid-row: auto; }
 .sdk-label { grid-row: span 3; }
 .quick-item > strong { overflow-wrap: anywhere; }
+#router-login { margin-bottom: 24px; }
 .topbar { min-height: 96px; height: auto; padding-block: 18px; gap: 20px; }
 .brand-copy > span { letter-spacing: .04em; }
 .chapter-summary, .device-card-summary { min-width: 0; }
