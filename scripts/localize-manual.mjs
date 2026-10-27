@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const source = await readFile(path.join(root, 'content/manual.zh.html'), 'utf8');
@@ -44,6 +45,7 @@ const catalog = JSON.stringify(Object.entries(translations).map(([zh, en]) => [e
   .replaceAll('<', '\\u003c');
 output = output.replace('  <script src="app.js"></script>',
   `  <script id="manual-translations" type="application/json">${catalog}</script>\n  <script src="i18n.js?v=20261027"></script>\n  <script src="app.js?v=20261027"></script>`);
-output = output.replace('href="styles.css"', 'href="styles.css?v=20261027"');
+const styleRevision = createHash('sha256').update(await readFile(path.join(root, 'styles.css'))).digest('hex').slice(0, 12);
+output = output.replace('href="styles.css"', `href="styles.css?v=${styleRevision}"`);
 await writeFile(path.join(root, 'index.html'), output);
 console.log('Bilingual manual generated: English default, Chinese switch available.');
