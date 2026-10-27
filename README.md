@@ -4,7 +4,7 @@
 
 仓库已按实验室要求公开。GitHub Pages 发布密码解密版正文，图片与图纸附件保持公开下载。
 
-六个操作栏目均采用默认收起的折叠卡片，展示图片或栏目图形、名称和简要提示。固定导航会展开并定位到对应栏目；目录旁可统一展开或收起主栏目与外置设备卡片。直接访问原有锚点也会展开相应的父级卡片。外置设备保持独立折叠，图纸和下载入口在展开后显示。
+七个操作栏目均采用默认收起的折叠卡片，展示图片或栏目图形、名称和简要提示。固定导航会展开并定位到对应栏目；目录旁可统一展开或收起主栏目与外置设备卡片。直接访问原有锚点也会展开相应的父级卡片。外置设备保持独立折叠，图纸和下载入口在展开后显示。
 
 页面采用暖白底色、深墨绿展开状态与香槟色细节，使用本机字体，支持手机布局、键盘操作和减少动画偏好，无外部字体或新增依赖。
 
@@ -64,3 +64,12 @@ python3 -m http.server 8000
 本地构建：安装 Node.js 后执行 `npm ci --ignore-scripts`，在环境中设置 `STATICRYPT_PASSWORD`，然后执行 `npm run build:pages`。原始网页仍可直接打开，无需 Node.js。
 
 加密工具来源：[StatiCrypt](https://github.com/robinmoisson/staticrypt)，MIT 许可证随发布文件保存。
+
+## 本体数据与常用指令
+
+`#body-data` 栏目根据宇树官方 ROS 2 / Python SDK2 源码整理本体电脑连接、DDS 网卡设置、状态 topic、前置相机样本获取、ROS 2 图像桥接、rosbag 与常用高层指令。
+
+- 本机入口沿用 `unitree@192.168.123.18`，未假设本机 ROS 版本、网卡名或安装路径。
+- SDK2 原生 DDS topic 与 ROS 2 名称分别说明；前置相机使用官方 `VideoClient.GetImageSample()`，不假定出厂存在标准 Image topic。
+- `downloads/go2-body-examples/` 与 `downloads/Go2_body_examples.zip` 包含自行编写的相机和指令参考脚本，以及中文说明。`/lab/go2/front_camera/image_raw` 为示例创建的 topic，图像时间戳使用主机接收时刻，不提供标定 TF 或 CameraInfo。
+- 本次仅编写文档与示例，未连接机器狗、运行示例或发送运动指令。脚本的环境兼容性及接口响应需在实际设备上确认。

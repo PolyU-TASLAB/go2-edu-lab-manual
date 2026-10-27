@@ -43,11 +43,12 @@
       <a href="#ssh"><span>04</span>SSH 连接</a>
       <a href="#records"><span>05</span>硬件接口 / 孔位</a>
       <a href="#external-devices"><span>06</span>外置设备</a>
+      <a href="#body-data"><span>07</span>本体数据 / 指令</a>
     </nav>
 
 
     <div class="manual-heading">
-      <div><p class="eyebrow">THE FIELD GUIDE</p><h2>操作目录 <span>06</span></h2></div>
+      <div><p class="eyebrow">THE FIELD GUIDE</p><h2>操作目录 <span>07</span></h2></div>
       <div class="manual-controls"><button type="button" data-fold-action="expand">全部展开 <span aria-hidden="true">＋</span></button><button type="button" data-fold-action="collapse">全部收起 <span aria-hidden="true">−</span></button></div>
     </div>
     <details class="chapter-card" id="startup">
@@ -301,6 +302,84 @@
 
       </div>
     </details>
+      </div>
+    </details>
+
+    <details class="chapter-card" id="body-data">
+      <summary class="chapter-summary">
+        <span class="chapter-number">07</span>
+        <span class="chapter-thumbnail"><span class="terminal-thumb" aria-hidden="true"><span>DDS</span><b>↗</b></span></span>
+        <span class="chapter-copy"><span class="chapter-kicker">ROBOT DATA &amp; API</span><span class="chapter-title" role="heading" aria-level="3">本体数据与常用指令</span><span class="chapter-description">SSH · ROS 2 topic · 前置相机 · 高层控制</span></span>
+        <span class="chapter-meta">SDK2 / ROS 2</span><span class="fold-icon" aria-hidden="true"></span>
+      </summary>
+      <div class="chapter-content">
+        <p class="chapter-intro">从机器狗内部电脑读取自带传感器数据，并通过官方高层接口发送常用指令。下列接口已核对宇树官方源码；本机 ROS 版本、已安装路径及实际 topic 列表仍需在终端确认，本页未记录实机运行结果。</p>
+        <nav class="api-guide-nav" aria-label="本体数据操作步骤"><a href="#body-connect">01 连接电脑</a><a href="#body-state">02 读取数据</a><a href="#body-camera">03 自带相机</a><a href="#body-control">04 常用指令</a><a href="#body-examples">下载示例</a></nav>
+        <article class="operation-card hardware-card" id="body-connect">
+          <div class="operation-card-head"><div><span class="op-icon">01</span><div><h3>连接本体电脑，确认开发环境</h3><p>已提供的 SSH 入口：192.168.123.18 / unitree；密码见 SSH 栏目。</p></div></div><span class="note-tag">先只读检查</span></div>
+          <p class="controller-copy">先连接 RoboNet，再登录机器狗电脑。登录后，选择连接机器人内部网络的网卡运行 DDS / ROS 2 程序；SSH 地址、DDS 网卡名与相机 topic 分别确认。</p>
+          <div class="code-panel"><div class="code-panel-bar"><span>在电脑终端登录</span><button class="copy" data-copy-target="body-connect-cmd" data-copy-label="命令" aria-label="复制在电脑终端登录">复制命令</button></div><pre id="body-connect-cmd"><code>ssh unitree@192.168.123.18</code></pre></div><div class="code-panel"><div class="code-panel-bar"><span>登录后只读检查</span><button class="copy" data-copy-target="body-environment-cmd" data-copy-label="命令" aria-label="复制登录后只读检查">复制命令</button></div><pre id="body-environment-cmd"><code>ip -br -4 addr
+ip route
+printf &#x27;ROS_DISTRO=%s\n&#x27; &quot;${ROS_DISTRO:-未加载}&quot;
+command -v ros2 || true
+python3 -c &quot;import importlib.util; print(&#x27;SDK2:&#x27;, importlib.util.find_spec(&#x27;unitree_sdk2py&#x27;))&quot;</code></pre></div>
+          <p class="controller-copy">从上面的网卡列表确认内部网络接口，然后在当前 Bash 终端设置一次，供后续示例使用。</p><div class="code-panel"><div class="code-panel-bar"><span>设置实际 DDS 网卡</span><button class="copy" data-copy-target="body-interface-cmd" data-copy-label="命令">复制命令</button></div><pre id="body-interface-cmd"><code>read -r -p &quot;输入机器人内部网络的网卡名: &quot; GO2_IFACE
+export GO2_IFACE</code></pre></div>
+          <div class="hardware-note"><b>SSH 可达之后，还需确认 DDS 通信</b><p>RoboNet 的路由访问可用于 SSH，但 DDS 发现可能受网卡、组播与网段影响。建议先在机器狗内部电脑运行示例；从外部电脑直接订阅时，需另行确认 DDS 可达。网卡名不能固定假设为 eth0。</p></div>
+          <details class="api-extra"><summary>已有官方 ROS 2 工作区时：加载通信环境</summary><p class="controller-copy">下面以官方支持的 Humble 环境和默认 DDS domain 0 为例。路径为示例；本机版本或工作区不同，使用对应路径。还未安装时，按官方仓库完成依赖与消息包编译后再运行。</p><div class="code-panel"><div class="code-panel-bar"><span>示例：Ubuntu 22.04 / ROS 2 Humble</span><button class="copy" data-copy-target="body-ros-env-cmd" data-copy-label="命令" aria-label="复制示例：Ubuntu 22.04 / ROS 2 Humble">复制命令</button></div><pre id="body-ros-env-cmd"><code># 前提：已安装 ROS 2、已编译官方 unitree_ros2 工作区
+# 沿用上一步填写的 GO2_IFACE；在每个新终端确认此变量已设置
+source /opt/ros/humble/setup.bash
+source ~/unitree_ros2/cyclonedds_ws/install/setup.bash
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export ROS_DOMAIN_ID=0
+export CYCLONEDDS_URI=&quot;&lt;CycloneDDS&gt;&lt;Domain&gt;&lt;General&gt;&lt;Interfaces&gt;&lt;NetworkInterface name=\&quot;${GO2_IFACE}\&quot; priority=\&quot;default\&quot; multicast=\&quot;default\&quot;/&gt;&lt;/Interfaces&gt;&lt;/General&gt;&lt;/Domain&gt;&lt;/CycloneDDS&gt;&quot;
+ros2 topic list -t</code></pre></div><div class="source-links"><a href="https://github.com/unitreerobotics/unitree_ros2#configuration" target="_blank" rel="noopener noreferrer">官方 ROS 2 安装与网卡设置 ↗</a><a href="https://github.com/unitreerobotics/unitree_sdk2_python#installation" target="_blank" rel="noopener noreferrer">官方 Python SDK2 安装 ↗</a></div></details>
+        </article>
+        <article class="operation-card hardware-card" id="body-state">
+          <div class="operation-card-head"><div><span class="op-icon">02</span><div><h3>查看自带数据与 topic</h3><p>先发现，再查看类型、发布节点和实际内容。</p></div></div><span class="note-tag">只读</span></div>
+          <div class="manual-table-wrap"><table class="manual-table"><caption class="sr-only">Go2 官方状态接口</caption><thead><tr><th scope="col">数据</th><th scope="col">ROS 2 接口</th><th scope="col">可读取的内容</th></tr></thead><tbody><tr><th scope="row">运动状态</th><td><code>/sportmodestate</code><br><code>/lf/sportmodestate</code></td><td><code>unitree_go/msg/SportModeState</code>：机身位置、速度、姿态 IMU、步态及足端状态。</td></tr><tr><th scope="row">底层状态</th><td><code>/lowstate</code><br><code>/lf/lowstate</code></td><td><code>unitree_go/msg/LowState</code>：IMU、关节角度／角速度／估计力矩、电源与电池数据。</td></tr><tr><th scope="row">遥控器状态</th><td><code>/wirelesscontroller</code></td><td><code>unitree_go/msg/WirelessController</code>：摇杆和按键状态。</td></tr><tr><th scope="row">相机／点云</th><td>先用类型查询实际名称</td><td>标准图像查 <code>sensor_msgs/msg/Image</code>；标准点云查 <code>sensor_msgs/msg/PointCloud2</code>，是否存在取决于本机发布服务。</td></tr></tbody></table></div>
+          <div class="code-panel"><div class="code-panel-bar"><span>ROS 2：查看数据与发布端</span><button class="copy" data-copy-target="body-state-cmd" data-copy-label="命令" aria-label="复制ROS 2：查看数据与发布端">复制命令</button></div><pre id="body-state-cmd"><code>ros2 topic list -t
+ros2 topic info /sportmodestate -v
+ros2 topic echo /sportmodestate --once --qos-reliability best_effort
+ros2 topic echo /lowstate --once --qos-reliability best_effort</code></pre></div>
+          <p class="controller-copy">如只发现 <code>/lf/…</code>，将命令替换为对应 topic。SDK2 原生 DDS 名称常带 <code>rt/</code>，例如 <code>rt/lowstate</code>；ROS 2 命令使用实际发现的 ROS topic 名称。运动状态中的位置属于里程计坐标，不能直接当作 GNSS 经纬度。</p>
+          <details class="api-extra"><summary>记录状态数据到 rosbag</summary><p class="controller-copy">以下名称需先确认存在；相机桥接启动后，也可把它的图像 topic 加入记录命令。</p><div class="code-panel"><div class="code-panel-bar"><span>记录实际存在的状态 topic</span><button class="copy" data-copy-target="body-record-cmd" data-copy-label="命令" aria-label="复制记录实际存在的状态 topic">复制命令</button></div><pre id="body-record-cmd"><code>ros2 bag record -o go2_state /sportmodestate /lowstate
+# Ctrl+C 结束；之后查看记录信息
+ros2 bag info go2_state</code></pre></div></details>
+          <div class="source-links"><a href="https://github.com/unitreerobotics/unitree_ros2#state-acquisition" target="_blank" rel="noopener noreferrer">官方状态采集说明 ↗</a><a href="https://github.com/unitreerobotics/unitree_ros2/blob/master/cyclonedds_ws/src/unitree/unitree_go/msg/LowState.msg" target="_blank" rel="noopener noreferrer">LowState 消息定义 ↗</a><a href="https://github.com/unitreerobotics/unitree_ros2/blob/master/cyclonedds_ws/src/unitree/unitree_go/msg/SportModeState.msg" target="_blank" rel="noopener noreferrer">SportModeState 消息定义 ↗</a></div>
+        </article>
+        <article class="operation-card hardware-card" id="body-camera">
+          <div class="operation-card-head"><div><span class="op-icon">03</span><div><h3>获取 Go2 自带前置相机</h3><p>区分实际已发布的 ROS 图像与 SDK2 videohub 取图。</p></div></div><span class="note-tag">相机数据</span></div>
+          <p class="controller-copy">先查询本机已有的图像 topic，并用 <code>ros2 topic info 实际名称 -v</code> 核对发布节点。若没有标准图像 topic，使用官方 <code>VideoClient.GetImageSample()</code> 获取前置相机样本；无需先找到一个预设的 ROS 相机名称。</p>
+          <div class="code-panel"><div class="code-panel-bar"><span>先查实际图像 topic</span><button class="copy" data-copy-target="body-camera-find-cmd" data-copy-label="命令" aria-label="复制先查实际图像 topic">复制命令</button></div><pre id="body-camera-find-cmd"><code>ros2 topic find sensor_msgs/msg/Image
+ros2 topic find sensor_msgs/msg/CompressedImage
+ros2 topic find unitree_go/msg/Go2FrontVideoData
+# 同时查看发布节点，区分 Go2 自带相机和 Odin1 等外置相机
+ros2 topic list -t</code></pre></div>
+          <p class="controller-copy">如果发现 <code>/frontvideostream</code>，先核对消息类型；官方 <code>Go2FrontVideoData</code> 包含时间字段和多路视频字节数组，并非标准 <code>sensor_msgs/msg/Image</code>。本页不直接将这些视频字节当作 JPEG 解码，取图采用下方官方 SDK 接口。</p><div class="api-method-grid"><div><span>方法 A · 纯 SSH</span><h4>保存一张图，再取回电脑</h4><p>适用于无桌面的本体电脑。示例将 SDK 返回的图像保存为文件，不打开远程窗口。</p></div><div><span>方法 B · 需要 ROS 图像时</span><h4>启动示例桥接节点</h4><p>读取同一个官方 SDK 接口，解码后发布标准 Image，供图像查看和 rosbag 使用。</p></div></div>
+          <div class="code-panel"><div class="code-panel-bar"><span>SDK2：无桌面也能保存一张图片</span><button class="copy" data-copy-target="body-camera-capture-cmd" data-copy-label="命令" aria-label="复制SDK2：无桌面也能保存一张图片">复制命令</button></div><pre id="body-camera-capture-cmd"><code># 假定示例包已放到 ~/go2-body-examples，SDK2 已安装
+cd ~/go2-body-examples
+python3 go2_camera.py --interface &quot;$GO2_IFACE&quot; --output go2_front.jpg</code></pre></div><div class="code-panel"><div class="code-panel-bar"><span>在自己的电脑下载图片</span><button class="copy" data-copy-target="body-camera-scp-cmd" data-copy-label="命令" aria-label="复制在自己的电脑下载图片">复制命令</button></div><pre id="body-camera-scp-cmd"><code>scp unitree@192.168.123.18:~/go2-body-examples/go2_front.jpg .</code></pre></div>
+          <details class="api-extra"><summary>需要 ROS 2 相机 topic：启动桥接示例</summary><div class="code-panel"><div class="code-panel-bar"><span>可选：把 SDK 相机图像发布为 ROS 2 topic</span><button class="copy" data-copy-target="body-camera-bridge-cmd" data-copy-label="命令" aria-label="复制可选：把 SDK 相机图像发布为 ROS 2 topic">复制命令</button></div><pre id="body-camera-bridge-cmd"><code># 在已加载 ROS 2 环境的本体电脑终端运行
+python3 go2_camera.py --interface &quot;$GO2_IFACE&quot; --ros2
+# 在有图形桌面的另一个 ROS 2 终端运行，再选择图像 topic
+ros2 run rqt_image_view rqt_image_view</code></pre></div><div class="hardware-note"><b>本示例创建的 topic</b><p><code>/lab/go2/front_camera/image_raw</code>，类型 <code>sensor_msgs/msg/Image</code>，BGR8；它是本页示例发布的名称。默认请求 5 Hz，时间戳为主机接收时刻；不提供硬件同步时间、CameraInfo 或相机到机身的标定 TF。</p></div><p class="controller-copy">图像查看器在有图形桌面的 Ubuntu 终端运行；从另一台电脑查看时，仍需满足 DDS 发现条件。Go2 自带相机与 Odin1 的 RGB 相机分别属于不同设备。</p></details>
+          <div class="source-links"><a href="https://github.com/unitreerobotics/unitree_sdk2_python/blob/master/example/go2/front_camera/capture_image.py" target="_blank" rel="noopener noreferrer">官方前置相机保存示例 ↗</a><a href="https://github.com/unitreerobotics/unitree_sdk2_python/blob/master/unitree_sdk2py/go2/video/video_client.py" target="_blank" rel="noopener noreferrer">VideoClient 接口源码 ↗</a><a href="https://github.com/unitreerobotics/unitree_ros2/blob/master/cyclonedds_ws/src/unitree/unitree_go/msg/Go2FrontVideoData.msg" target="_blank" rel="noopener noreferrer">官方视频消息定义 ↗</a></div>
+        </article>
+        <article class="operation-card hardware-card" id="body-control">
+          <div class="operation-card-head"><div><span class="op-icon">04</span><div><h3>下发常用高层指令</h3><p>使用官方 SportClient 或 ROS 2 请求接口。</p></div></div><span class="pending-badge">执行会影响实机</span></div>
+          <p class="controller-copy">先确认官方高层运动服务可用、当前允许机器狗动作，并保留遥控器接管。下列方法是高层接口；本栏示例使用 SDK2 发送请求。</p>
+          <div class="manual-table-wrap"><table class="manual-table"><caption class="sr-only">Go2 常用高层控制接口</caption><thead><tr><th scope="col">操作</th><th scope="col">SDK2 方法</th><th scope="col">API ID</th></tr></thead><tbody><tr><th scope="row">停止速度运动</th><td><code>StopMove()</code></td><td>1003</td></tr><tr><th scope="row">站起</th><td><code>StandUp()</code></td><td>1004</td></tr><tr><th scope="row">趴下</th><td><code>StandDown()</code></td><td>1005</td></tr><tr><th scope="row">平衡站立</th><td><code>BalanceStand()</code></td><td>1002</td></tr><tr><th scope="row">速度移动</th><td><code>Move(vx, vy, vyaw)</code><br>纵向／横向：m/s；偏航：rad/s</td><td>1008</td></tr></tbody></table></div>
+          <p class="controller-copy">在 <code>~/go2-body-examples</code> 目录中，按需要单独复制并执行一条命令：</p><div class="api-command-list"><div class="api-command-row"><div><b>停止速度运动</b><code>python3 go2_command.py --interface &quot;$GO2_IFACE&quot; --action stop</code></div><button class="copy" data-copy="python3 go2_command.py --interface &quot;$GO2_IFACE&quot; --action stop" data-copy-label="停止速度运动命令">复制命令</button></div><div class="api-command-row"><div><b>站起</b><code>python3 go2_command.py --interface &quot;$GO2_IFACE&quot; --action standup</code></div><button class="copy" data-copy="python3 go2_command.py --interface &quot;$GO2_IFACE&quot; --action standup" data-copy-label="站起命令">复制命令</button></div><div class="api-command-row"><div><b>趴下</b><code>python3 go2_command.py --interface &quot;$GO2_IFACE&quot; --action standdown</code></div><button class="copy" data-copy="python3 go2_command.py --interface &quot;$GO2_IFACE&quot; --action standdown" data-copy-label="趴下命令">复制命令</button></div><div class="api-command-row"><div><b>平衡站立</b><code>python3 go2_command.py --interface &quot;$GO2_IFACE&quot; --action balance</code></div><button class="copy" data-copy="python3 go2_command.py --interface &quot;$GO2_IFACE&quot; --action balance" data-copy-label="平衡站立命令">复制命令</button></div></div>
+          <details class="api-extra"><summary>短时移动示例与停止方式</summary><div class="code-panel"><div class="code-panel-bar"><span>短距离移动示例：0.1 m/s，持续 1 秒</span><button class="copy" data-copy-target="body-move-cmd" data-copy-label="命令" aria-label="复制短距离移动示例：0.1 m/s，持续 1 秒">复制命令</button></div><pre id="body-move-cmd"><code>python3 go2_command.py --interface &quot;$GO2_IFACE&quot; --action move --vx 0.1 --seconds 1</code></pre></div><p class="controller-copy">示例以 20 Hz 请求移动，运行结束或按 Ctrl+C 时尝试发送 <code>StopMove()</code>。脚本将速度和持续时间限制在较小范围，这是示例自身的限制；运动效果仍取决于实机状态。停止速度运动和遥控器的阻尼模式是不同操作。</p></details>
+          <details class="api-extra"><summary>已有 ROS 2 环境：直接发布停止请求</summary><p class="controller-copy">官方入口为 <code>/api/sport/request</code>，消息类型为 <code>unitree_api/msg/Request</code>。通用 <code>/cmd_vel</code> 只有在本机另有转换节点时才会转为官方请求。</p><div class="code-panel"><div class="code-panel-bar"><span>ROS 2：发送一次停止运动请求</span><button class="copy" data-copy-target="body-stop-cmd" data-copy-label="命令" aria-label="复制ROS 2：发送一次停止运动请求">复制命令</button></div><pre id="body-stop-cmd"><code>ros2 topic pub --once /api/sport/request unitree_api/msg/Request   &#x27;{header: {identity: {api_id: 1003}}, parameter: &quot;{}&quot;}&#x27; </code></pre></div><p class="controller-copy">CLI 发布结束不等于已收到机器人响应；需要结合 <code>/api/sport/response</code> 和实际状态判断。日常使用可优先采用附带的 SDK2 示例读取返回码。</p></details>
+          <div class="source-links"><a href="https://github.com/unitreerobotics/unitree_sdk2_python/blob/master/unitree_sdk2py/go2/sport/sport_client.py" target="_blank" rel="noopener noreferrer">官方 SportClient 方法与 API ID ↗</a><a href="https://github.com/unitreerobotics/unitree_ros2/blob/master/example/src/src/common/ros2_sport_client.cpp" target="_blank" rel="noopener noreferrer">官方 ROS 2 请求生成方式 ↗</a></div>
+        </article>
+        <article class="operation-card hardware-card" id="body-examples">
+          <div class="operation-card-head"><div><span class="op-icon">↓</span><div><h3>下载配套示例</h3><p>接口参考已核对；本机尚未运行。脚本需要实际 SDK2 / ROS 2 环境。</p></div></div><span class="note-tag">示例程序</span></div>
+          <div class="download-grid"><a class="download-primary" href="downloads/Go2_body_examples.zip" download><span>完整示例包</span><strong>下载 ZIP ↓</strong><small>脚本与中文说明</small></a><a href="downloads/go2-body-examples/go2_camera.py" download><span>前置相机</span><strong>Python ↓</strong><small>保存图片 / ROS 2 桥接</small></a><a href="downloads/go2-body-examples/go2_command.py" download><span>高层指令</span><strong>Python ↓</strong><small>按参数显式发送操作</small></a><a href="downloads/go2-body-examples/README_CN.txt" target="_blank" rel="noopener"><span>运行说明</span><strong>README ↗</strong><small>依赖、命令与接口边界</small></a></div>
+        </article>
+        <div class="controller-sources"><span>官方资料核对 · 2026-10-27</span><span>本机待补充：系统与 ROS 版本、内部网卡、SDK 安装路径、实际 topic 和发布服务。</span></div>
       </div>
     </details>
     <footer><a class="footer-brand" href="#top">G2 <span>LAB FIELD GUIDE</span></a><span>Unitree Go2 EDU · 实验室设备手册</span><a href="#top">返回顶部 ↑</a></footer>

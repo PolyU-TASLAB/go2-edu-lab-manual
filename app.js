@@ -8,11 +8,15 @@ function showToast(message) {
   toastTimer = setTimeout(() => toast.classList.remove('show'), 2000);
 }
 
-document.querySelectorAll('[data-copy]').forEach((button) => {
+document.querySelectorAll('[data-copy], [data-copy-target]').forEach((button) => {
   button.addEventListener('click', async () => {
     try {
-      await navigator.clipboard.writeText(button.dataset.copy);
-      showToast(button.dataset.copyLabel ? `已复制${button.dataset.copyLabel}` : `已复制：${button.dataset.copy}`);
+      const text = button.dataset.copyTarget
+        ? document.getElementById(button.dataset.copyTarget)?.textContent
+        : button.dataset.copy;
+      if (text === undefined) throw new Error('Copy source not found');
+      await navigator.clipboard.writeText(text);
+      showToast(button.dataset.copyLabel ? `已复制${button.dataset.copyLabel}` : `已复制：${text}`);
     } catch {
       showToast('复制失败，请手动选择内容');
     }
