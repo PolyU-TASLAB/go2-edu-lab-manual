@@ -39,16 +39,18 @@
     <nav class="operation-nav" id="operation-nav" aria-label="常见操作栏目">
       <a href="#startup"><span>01</span>开机</a>
       <a href="#controller"><span>02</span>遥控器控制</a>
-      <a href="#network"><span>03</span>网络配置</a>
-      <a href="#ssh"><span>04</span>SSH 连接</a>
-      <a href="#records"><span>05</span>硬件接口 / 孔位</a>
-      <a href="#external-devices"><span>06</span>外置设备</a>
-      <a href="#body-data"><span>07</span>本体数据 / 指令</a>
+      <a href="#shutdown"><span>03</span>关机 / 取电池</a>
+      <a href="#charging"><span>04</span>安全放置 / 充电</a>
+      <a href="#network"><span>05</span>网络配置</a>
+      <a href="#ssh"><span>06</span>SSH 连接</a>
+      <a href="#records"><span>07</span>硬件接口 / 孔位</a>
+      <a href="#external-devices"><span>08</span>外置设备</a>
+      <a href="#body-data"><span>09</span>本体数据 / 指令</a>
     </nav>
 
 
     <div class="manual-heading">
-      <div><p class="eyebrow">THE FIELD GUIDE</p><h2>操作目录 <span>07</span></h2></div>
+      <div><p class="eyebrow">THE FIELD GUIDE</p><h2>操作目录 <span>09</span></h2></div>
       <div class="manual-controls"><button type="button" data-fold-action="expand">全部展开 <span aria-hidden="true">＋</span></button><button type="button" data-fold-action="collapse">全部收起 <span aria-hidden="true">−</span></button></div>
     </div>
     <details class="chapter-card" id="startup">
@@ -109,14 +111,77 @@
         <div class="stop-command"><div><span>阻尼模式 / 软急停</span><strong><kbd>L2</kbd><i>按住</i><b>+</b><kbd>B</kbd><i>点按</i></strong></div><p>关节进入阻尼状态，机身可能下沉。站立锁定使用下表的 L2 + A。</p></div>
         <div class="manual-table-wrap"><table class="manual-table"><caption class="sr-only">官方遥控器常用按键</caption><thead><tr><th scope="col">按键</th><th scope="col">功能</th></tr></thead><tbody><tr><th scope="row"><kbd>START</kbd> 点按</th><td>解锁 / 默认行走步态</td></tr><tr><th scope="row"><kbd>SELECT</kbd> 点按</th><td>姿态模式</td></tr><tr><th scope="row"><kbd>L2</kbd> 按住 + <kbd>A</kbd> 点按</th><td>站立锁定 / 趴下</td></tr><tr><th scope="row"><kbd>L2</kbd> 按住 + <kbd>START</kbd> 点按</th><td>跑步模式</td></tr><tr><th scope="row"><kbd>L1</kbd> 按住 + <kbd>SELECT</kbd> 点按</th><td>续航模式</td></tr><tr><th scope="row"><kbd>X</kbd> 点按</th><td>开启避障</td></tr><tr><th scope="row"><kbd>Y</kbd> 长按 3 秒</th><td>关闭避障</td></tr><tr><th scope="row"><kbd>L2</kbd> + <kbd>SELECT</kbd> 点按</th><td>切换探照灯</td></tr></tbody></table></div>
       </article>
+      <article class="operation-card controller-block" id="controller-avoidance">
+        <div class="operation-card-head"><div><span class="op-icon">↔</span><div><h3>默认避障与室内取消方法</h3><p>本机默认开启避障。室内靠近桌椅、墙壁或狭窄通道时，较保守的避障可能使机器狗减速或停止。</p></div></div><span class="note-tag">默认开启</span></div>
+        <div class="api-method-grid"><div><span>室内需要手动通过时</span><h4><kbd>Y</kbd> 长按 3 秒</h4><p>先确认周围和计划路径有足够空间，再长按 Y 关闭避障；关闭后用遥控器低速、小幅操作，由操作者判断距离。</p></div><div><span>操作结束后恢复</span><h4><kbd>X</kbd> 点按</h4><p>点按 X 重新开启避障。不要把已关闭避障的状态直接交给下一位操作者；结合 App 中的实际状态确认。</p></div></div>
+        <div class="hardware-note"><b>取消避障后由操作者负责避让</b><p>避障关闭不等于紧急停止。不要用持续大幅推杆强行通过桌椅之间；需要停止时先松开摇杆，阻尼模式的用法见上方按键说明。</p></div>
+        <div class="source-links"><a href="https://static.generation-robots.com/media/Go2-Handheld-Remote-Control.pdf#page=7" target="_blank" rel="noopener noreferrer">官方遥控器手册 · 避障默认值与按键 ↗</a><a href="#shutdown">关机与取电池流程 →</a></div>
+      </article>
       <details class="operation-card controller-block controller-details"><summary>摇杆校准、充电与版本说明</summary><div class="details-content"><h3>摇杆校准</h3><p>先保持摇杆不动，同时按下并松开 <kbd>F1</kbd> 和 <kbd>F3</kbd>。听到每秒一次的提示音后，将左右摇杆各自推至最大行程并转动数圈；提示音停止后，点按 <kbd>F3</kbd> 完成校准。</p><h3>充电</h3><p>关闭遥控器后，通过 USB-C 接口连接 5V USB 充电器。R3 充满时电量灯全亮，R1 旧版手册记载为全灭；按对应版本判断。</p><h3>版本适用范围</h3><p>宇树现行手册同时收录 R1 与 R3，说明二者核心操作一致。不同固件的扩展动作可能变化，完整动作表请查看官方手册或 Unitree Go App。</p></div></details>
       <div class="controller-sources"><span>资料来源</span><a href="https://marketing.unitree.com/article/en/Go2/Handheld_Remote_Control.html" target="_blank" rel="noopener noreferrer">宇树官方手持遥控器手册（含 R1 / R3） ↗</a><a href="https://static.generation-robots.com/media/Go2-Handheld-Remote-Control.pdf" target="_blank" rel="noopener noreferrer">宇树手册 V1.0 镜像 ↗</a></div>
       </div>
     </details>
 
-    <details class="chapter-card" id="network">
+    <details class="chapter-card" id="shutdown">
       <summary class="chapter-summary">
         <span class="chapter-number">03</span>
+        <span class="chapter-thumbnail thumbnail-startup"><img src="assets/unitree-go2-product.png" alt="Go2 官方产品图" loading="lazy"></span>
+        <span class="chapter-copy"><span class="chapter-kicker">SHUTDOWN</span><span class="chapter-title" role="heading" aria-level="3">关机与取电池</span><span class="chapter-description">L2 + A 站定 → 再按趴稳 → 断电 → 取电池</span></span>
+        <span class="chapter-meta">收工流程</span><span class="fold-icon" aria-hidden="true"></span>
+      </summary>
+      <div class="chapter-content">
+        <p class="chapter-intro">先结束数据录制和正在运行的程序，再按下面的顺序收工。机器狗必须先落地趴稳，再关闭电源和取出电池。</p>
+        <article class="operation-card">
+          <div class="operation-card-head"><div><span class="op-icon">⏻</span><div><h3>先站定，再趴下，最后断电</h3><p>按实验室操作流程整理；L2 + A 的站立锁定与再次趴下功能已核对官方手册。</p></div></div><span class="note-tag">按顺序操作</span></div>
+          <ol class="steps">
+            <li><span class="step-no">01</span><div><h3><kbd>L2</kbd> 按住 + <kbd>A</kbd> 点按：站定</h3><p>将机器狗停在平整地面，摇杆回中。按住 L2，再点按 A，让机器狗进入站立锁定，等待机身稳定。</p></div></li>
+            <li><span class="step-no">02</span><div><h3>再次 <kbd>L2</kbd> + <kbd>A</kbd>：坐下 / 趴稳</h3><p>再次执行同一组合键，让机器狗趴下。这里的“坐下”指关机前机身落地；确认腹部支撑垫贴地、四肢收稳，再进行下一步。</p></div></li>
+            <li><span class="step-no">03</span><div><h3>电源键短按一次，再长按关机</h3><p>操作机器狗电池上的电源键：先短按一次，再长按 3 秒以上，直到电池指示灯熄灭；确认整机已断电。不要在机器狗仍站立时直接切断电源。</p></div></li>
+            <li><span class="step-no">04</span><div><h3>断电后取出电池</h3><p>按住电池两侧释放卡扣，沿电池槽方向平稳抽出。禁止带电拔插；同时留意 Cudy、Odin1 等外置设备的线束，不要拉扯。随后按下方说明放置和充电。</p></div></li>
+          </ol>
+          <div class="source-links"><a href="https://static.generation-robots.com/media/Go2-Handheld-Remote-Control.pdf#page=6" target="_blank" rel="noopener noreferrer">官方遥控器手册 · 站立锁定 / 再次趴下 ↗</a><a href="https://static.generation-robots.com/media/Go2-Battery-and-Charger.pdf#page=5" target="_blank" rel="noopener noreferrer">官方电池手册 · 关机按键 ↗</a><a href="#charging">安全放置与充电 →</a></div>
+        </article>
+      </div>
+    </details>
+
+    <details class="chapter-card" id="charging">
+      <summary class="chapter-summary">
+        <span class="chapter-number">04</span>
+        <span class="chapter-thumbnail thumbnail-startup"><img src="assets/unitree-go2-product.png" alt="Go2 官方产品图" loading="lazy"></span>
+        <span class="chapter-copy"><span class="chapter-kicker">STORAGE &amp; CHARGING</span><span class="chapter-title" role="heading" aria-level="3">安全放置与充电</span><span class="chapter-description">趴稳放置 · 关机取电池 · 冷却后充电</span></span>
+        <span class="chapter-meta">收纳 / 电池</span><span class="fold-icon" aria-hidden="true"></span>
+      </summary>
+      <div class="chapter-content">
+        <p class="chapter-intro">关机后让机身获得可靠支撑，再处理电池。以下区分机器狗的放置、主电池充电与长期存放；遥控器 USB-C 充电见遥控器栏目。</p>
+        <article class="operation-card" id="safe-placement">
+          <div class="operation-card-head"><div><span class="op-icon">↓</span><div><h3>机器狗如何放置</h3><p>放在平整、干燥且有可靠支撑的位置，远离桌边和通道。</p></div></div><span class="note-tag">关机后整理</span></div>
+          <ol class="steps">
+            <li><span class="step-no">01</span><div><h3>腹部支撑垫贴地，收好四肢</h3><p>按开机姿态放置：机身保持水平、小腿收拢，膝关节与足端有支撑，大腿和小腿不被机身压住。只有确认断电后，才整理关节位置，避免夹手。</p></div></li>
+            <li><span class="step-no">02</span><div><h3>避开背部外置设备与线束</h3><p>本机背部前方已安装 Odin1。放置、搬运或收纳时不要让传感器、天线或连接器承重，也不要抓住外置设备和线缆提起机器狗。</p></div></li>
+          </ol>
+          <div class="source-links"><a href="https://static1.squarespace.com/static/5e76e0c52a318c0c1a850442/t/6670b6185e6f531946071db4/1718662712134/GO2%2BEdu%2BUser%2BManual.pdf#page=35" target="_blank" rel="noopener noreferrer">Go2 EDU 手册 · 放置与关机姿态 ↗</a><a href="#odin1">本机 Odin1 安装位置 →</a></div>
+        </article>
+        <article class="operation-card hardware-card" id="battery-charging">
+          <div class="operation-card-head"><div><span class="op-icon">↯</span><div><h3>主电池取出后充电</h3><p>使用匹配的宇树官方专用充电器；不套用遥控器的 USB 充电方式。</p></div></div><span class="note-tag">电池保持关闭</span></div>
+          <ol class="steps">
+            <li><span class="step-no">01</span><div><h3>先关机取电池，等待冷却</h3><p>按关机流程取出电池，保持电池关闭；运行后先冷却到室温。发现鼓包、破损、进水或异常发热时停止使用和充电。</p></div></li>
+            <li><span class="step-no">02</span><div><h3>选择通风、不燃的充电位置</h3><p>电池和充电器放在稳定、不燃表面，周围不堆放纸张或其他易燃物，保持散热并在视线范围内充电。官方推荐充电环境为 5–40°C。</p></div></li>
+            <li><span class="step-no">03</span><div><h3>接入专用充电器，充满后断开</h3><p>先核对充电器铭牌与市电，再接交流电源及电池。结合电池与充电器指示确认状态，充满后断开连接；不将电池留在无人看管的充电状态。</p></div></li>
+          </ol>
+          <div class="source-links"><a href="https://static.generation-robots.com/media/Go2-Battery-and-Charger.pdf#page=5" target="_blank" rel="noopener noreferrer">官方电池与充电器手册 · 充电连接 ↗</a><a href="https://static.generation-robots.com/media/Go2-Battery-and-Charger.pdf#page=9" target="_blank" rel="noopener noreferrer">充电环境与注意事项 ↗</a></div>
+        </article>
+        <article class="operation-card hardware-card" id="battery-storage">
+          <div class="operation-card-head"><div><span class="op-icon">↳</span><div><h3>不用时如何收纳</h3><p>机身与电池分开保存；不压住电池和充电器。</p></div></div><span class="note-tag">长期存放</span></div>
+          <p class="controller-copy">机器狗放在干燥、阴凉处，长期不用时取出电池。电池端子远离金属物和液体，不在超过 40°C 的环境中存放。定期检查电量；低于 30% 时补充到约 70% 后再存放，避免长期空电。</p>
+          <div class="source-links"><a href="https://static.generation-robots.com/media/Go2-Battery-and-Charger.pdf#page=10" target="_blank" rel="noopener noreferrer">官方电池手册 · 存放与维护 ↗</a><a href="https://static1.squarespace.com/static/5e76e0c52a318c0c1a850442/t/6670b6185e6f531946071db4/1718662712134/GO2%2BEdu%2BUser%2BManual.pdf#page=44" target="_blank" rel="noopener noreferrer">Go2 EDU 手册 · 机身存放与电池维护 ↗</a></div>
+        </article>
+        <div class="controller-sources"><span>官方资料核对 · 2026-10-27</span><span>放置提示已结合本机 Odin1 安装情况；电池与充电器具体型号以实物铭牌为准。</span></div>
+      </div>
+    </details>
+
+    <details class="chapter-card" id="network">
+      <summary class="chapter-summary">
+        <span class="chapter-number">05</span>
         <span class="chapter-thumbnail thumbnail-network"><span class="mini-network" aria-hidden="true"><span>RoboNet</span><i></i><b>Cudy</b><i></i><span>Go2</span></span></span>
         <span class="chapter-copy"><span class="chapter-kicker">NETWORK</span><span class="chapter-title" role="heading" aria-level="3">网络配置</span><span class="chapter-description">RoboNet · Cudy / OpenWrt</span></span>
         <span class="chapter-meta">RoboNet</span>
@@ -166,7 +231,7 @@
 
     <details class="chapter-card" id="ssh">
       <summary class="chapter-summary">
-        <span class="chapter-number">04</span>
+        <span class="chapter-number">06</span>
         <span class="chapter-thumbnail thumbnail-ssh"><span class="terminal-thumb" aria-hidden="true"><span>ssh</span><b>↗</b></span></span>
         <span class="chapter-copy"><span class="chapter-kicker">REMOTE ACCESS</span><span class="chapter-title" role="heading" aria-level="3">SSH 连接</span><span class="chapter-description">unitree@192.168.123.18</span></span>
         <span class="chapter-meta">终端接入</span>
@@ -185,7 +250,7 @@
 
     <details class="chapter-card" id="records">
       <summary class="chapter-summary">
-        <span class="chapter-number">05</span>
+        <span class="chapter-number">07</span>
         <span class="chapter-thumbnail thumbnail-records"><img src="assets/go2-edu-mounting-dimensions.png" alt="Go2 安装孔位原图" loading="lazy"></span>
         <span class="chapter-copy"><span class="chapter-kicker">HARDWARE</span><span class="chapter-title" role="heading" aria-level="3">硬件接口与孔位</span><span class="chapter-description">背部接口 · 安装尺寸 · 原始图纸</span></span>
         <span class="chapter-meta">硬件资料</span>
@@ -214,7 +279,7 @@
     </details>
     <details class="chapter-card" id="external-devices">
       <summary class="chapter-summary">
-        <span class="chapter-number">06</span>
+        <span class="chapter-number">08</span>
         <span class="chapter-thumbnail thumbnail-external-devices"><span class="equipment-thumbs"><img src="assets/manifold-odin1-product.webp" alt="" loading="lazy"><img src="assets/livox-mid360-official.jpg" alt="" loading="lazy"></span></span>
         <span class="chapter-copy"><span class="chapter-kicker">EXPANSION</span><span class="chapter-title" role="heading" aria-level="3">外置设备</span><span class="chapter-description">Odin1 · MID360 · GNSS 天线</span></span>
         <span class="chapter-meta">3 类设备</span>
@@ -311,7 +376,7 @@
 
     <details class="chapter-card" id="body-data">
       <summary class="chapter-summary">
-        <span class="chapter-number">07</span>
+        <span class="chapter-number">09</span>
         <span class="chapter-thumbnail"><span class="terminal-thumb" aria-hidden="true"><span>DDS</span><b>↗</b></span></span>
         <span class="chapter-copy"><span class="chapter-kicker">ROBOT DATA &amp; API</span><span class="chapter-title" role="heading" aria-level="3">本体数据与常用指令</span><span class="chapter-description">SDK 选用 · ROS 2 topic · 前置相机 · 高层控制</span></span>
         <span class="chapter-meta">SDK2 / ROS 2</span><span class="fold-icon" aria-hidden="true"></span>
