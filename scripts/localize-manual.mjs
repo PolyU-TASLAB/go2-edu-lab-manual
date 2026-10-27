@@ -47,5 +47,7 @@ output = output.replace('  <script src="app.js"></script>',
   `  <script id="manual-translations" type="application/json">${catalog}</script>\n  <script src="i18n.js?v=20261027"></script>\n  <script src="app.js?v=20261027"></script>`);
 const styleRevision = createHash('sha256').update(await readFile(path.join(root, 'styles.css'))).digest('hex').slice(0, 12);
 output = output.replace('href="styles.css"', `href="styles.css?v=${styleRevision}"`);
+const themeRevision = createHash('sha256').update(await readFile(path.join(root, 'theme.css'))).digest('hex').slice(0, 12);
+output = output.replace('href="theme.css"', `href="theme.css?v=${themeRevision}"`);
 await writeFile(path.join(root, 'index.html'), output);
 console.log('Bilingual manual generated: English default, Chinese switch available.');

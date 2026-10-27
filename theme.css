@@ -1,0 +1,161 @@
+/* Shared by the encrypted unlock page and the manual. The OS preference is authoritative. */
+:root { color-scheme: light dark; }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ink: #e3ece5;
+    --muted: #a8baad;
+    --teal: #a1d1b0;
+    --lime: #d7ccaa;
+    --paper: #101813;
+    --line: #384a3e;
+    --white: #1a261f;
+    --orange: #dec28e;
+    --surface-soft: #202f25;
+    --surface-hover: #2a3f30;
+    --body-text: #cbd7ce;
+    --warning-bg: #342c1e;
+    --warning-line: #6e5c38;
+    --warning-text: #ecd7ad;
+    --image-paper: #eef0e8;
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  body { background: var(--paper); color: var(--ink); }
+  body::before { background: linear-gradient(90deg, #6b9d7a, #9cae91 54%, #d4be94); }
+  ::selection { background: #40604a; color: #f1f5ed; }
+  a { color: var(--teal); text-decoration-color: #789b80; }
+  button:focus-visible, a:focus-visible, summary:focus-visible { outline-color: var(--orange); }
+
+  .topbar-meta, .topbar-meta > span:last-child, .divider, .eyebrow,
+  .hero-eyebrow, .lede, .art-caption, .art-caption a, .hero-index,
+  .quick-label > span, .quick-item > span, .operation-nav a, .operation-nav a > span,
+  .manual-heading h2 > span, .manual-controls button, .manual-controls button > span,
+  .chapter-number, .chapter-kicker, .chapter-description, .chapter-meta,
+  .operation-card-head p, .step-count, .live-label, .step-no, .source-note,
+  .controller-photo figcaption, .controller-photo a, .controller-sources, .controller-sources a,
+  .map-upstream span, .map-vertical > span, .map-device small, .map-device > span,
+  .map-wire > span, .map-caption, .behavior-note p, .ssh-credentials > div > span,
+  .ssh-help, .hardware-figure figcaption, .mounting-summary span, .mounting-summary small,
+  .device-toggle, .device-image-credit, .device-image-credit a, .odin-connections span,
+  .attachment-note, .download-grid span, .download-grid small, footer, footer a,
+  .footer-brand span, .api-method-grid span, .sdk-label, .sdk-purpose, .sdk-status {
+    color: var(--muted);
+  }
+
+  .chapter-intro, .steps p, .controller-copy, .tip p, .details-content,
+  .manual-table tbody td, .hardware-note p, .device-intro,
+  .odin-modalities p, .odin-connections p, .api-method-grid p, .sdk-card-content p {
+    color: var(--body-text);
+  }
+
+  .card-topline, .steps p b, .details-content h3, .manual-table tbody th, .map-upstream strong,
+  .map-device strong, .ssh-credentials > div > b, .mounting-summary strong,
+  .hardware-note > b, .device-card-name, .odin-modalities b, .odin-connections strong,
+  .download-grid strong, .footer-brand, .api-method-grid h4, .api-command-row b,
+  .sdk-card strong { color: var(--ink); }
+
+  .source-links a, .source-note summary, .controller-details summary,
+  .hardware-dock summary, .gnss-details summary, .api-extra > summary,
+  .api-command-row code { color: var(--teal); }
+
+  .chapter-card, .card, .operation-card, .device-card, .sdk-card {
+    background: var(--white);
+    border-color: var(--line);
+  }
+  .chapter-card { box-shadow: 0 2px 8px #0000001a; }
+  .chapter-card:hover { border-color: #6c8b73; box-shadow: 0 8px 32px #00000033; }
+  .quickbar, .controller-photo, .hardware-figure { background: var(--surface-soft); border-color: var(--line); }
+  .operation-nav { background: #101813f2; border-color: var(--line); }
+  .operation-nav a:hover { background: var(--surface-hover); color: var(--ink); }
+  .operation-nav a[aria-current="location"] { background: #34513e; color: #f1f5eb; }
+  .operation-nav a[aria-current="location"] > span { color: #c7dacb; }
+  .manual-controls button:hover { color: var(--ink); }
+  .hero-link { border-color: #789b80; }
+  .hero-period { color: var(--orange); }
+  .hero-art::before {
+    border-color: #465a4a;
+    background: radial-gradient(ellipse at 35% 30%, #506254 0%, #25392b 55%, #101813 78%);
+  }
+
+  .chapter-intro, .steps li, .source-note, .manual-table th, .manual-table td,
+  .quick-item, .quick-label, .map-caption, .gnss-details, footer,
+  .odin-modalities > div, .api-extra { border-color: var(--line); }
+  .chapter-meta, .fold-icon, .language-switch, .tip-icon { border-color: #59745f; }
+  .fold-icon::before, .fold-icon::after { background: #bfd1c1; }
+  .chapter-card[open] > .chapter-summary { background: #263e2e; color: #f0f4ec; }
+  .chapter-card[open] > .chapter-summary .chapter-number,
+  .chapter-card[open] > .chapter-summary .chapter-kicker,
+  .chapter-card[open] > .chapter-summary .chapter-description { color: #c3d3c3; }
+  .chapter-card[open] > .chapter-summary .chapter-meta { color: #dce6d4; border-color: #6a8566; }
+
+  .tip, .op-icon, .note-tag, .ssh-credentials > div, .mounting-summary > div,
+  .map-upstream, .map-device, .odin-connections > div, .hardware-note,
+  .api-method-grid > div, .api-command-row, .api-guide-nav a, .download-grid a {
+    background: var(--surface-soft);
+    border-color: var(--line);
+  }
+  .op-icon, .note-tag, .tip-icon { color: #c3d5bc; }
+  .map-router { background: #293e2d; border-color: #67815f; }
+  .map-wire { background: #78916e; }
+  .map-vertical::before { border-color: #78916e; }
+  .map-wire > span { background: var(--white); }
+  .hardware-note { border-left-color: #7f9c71; }
+  .installed-note { background: #243b29; border-left-color: #98bd7f; }
+  .manual-table thead { background: #26362a; color: #c4d5bd; }
+  kbd { background: #2c3e2e; color: #e1ead9; border-color: #73876a; }
+
+  .caution-card, .stop-command { background: var(--warning-bg); border-color: var(--warning-line); }
+  .caution-card .eyebrow, .caution-card h3, .caution-card > p:not(.eyebrow),
+  .caution-card b, .caution-icon, .stop-command p, .stop-command > div > span,
+  .stop-command i, .stop-command b { color: var(--warning-text); }
+  .caution-icon, .caution-rule { border-color: var(--warning-line); }
+  .pending-badge, .is-pending { color: var(--warning-text); background: #43351e; }
+  .is-installed { color: #c2dfac; background: #2a4327; }
+
+  .device-card-summary:hover, .device-card[open] > .device-card-summary,
+  .sdk-card[open] > summary { background: #26372b; border-color: var(--line); }
+  .sdk-card > summary:focus-visible { outline-color: var(--orange); }
+  .api-guide-nav a { color: var(--teal); }
+  .api-guide-nav a:hover, .download-grid a:hover { background: var(--surface-hover); border-color: #809c73; }
+  .api-command-list, .api-command-row, .code-panel { border-color: var(--line); }
+  .code-panel { background: #0d1710; }
+  .code-panel-bar { background: #223429; border-color: #415a45; }
+  .code-panel-bar > span { color: #c5d7be; }
+  .code-panel pre { color: #e4eede; }
+  .command-template { background: #142519; border-color: #4d6850; color: #c4d9bb; }
+  .command-template code { color: #e1edc8; }
+  .copy { color: var(--teal); border-color: #637c65; }
+  .copy:hover, .command-copy:hover { background: var(--surface-hover); color: var(--ink); border-color: #9bb68e; }
+  .code-panel-bar .copy { color: #d5e4c9; border-color: #718b64; }
+  .code-panel-bar .copy:hover { background: #3b5339; color: #f6f8ef; }
+  .download-grid .download-primary { background: #2c4c31; border-color: #668e5b; }
+  .download-primary strong { color: #eff5de; }
+  .download-primary span, .download-primary small { color: #d0e3bd; }
+  .language-switch button[aria-pressed="true"] { background: #bed5c1; color: #17281b; }
+
+  /* Drawings and original product images retain their original colors and a light canvas. */
+  .chapter-thumbnail, .device-cover { background: var(--image-paper); border-color: #aeb8a5; }
+  .hardware-figure img, .controller-photo img { background: var(--image-paper); border-radius: 6px; }
+  .controller-photo img { padding: 12px; }
+
+  .unlock-page header, .unlock-page footer { border-color: var(--line); }
+  .unlock-page .brand span, .unlock-page .edition, .unlock-page .eyebrow,
+  .unlock-page figcaption, .unlock-page footer { color: var(--muted); }
+  .unlock-page .description, .unlock-page label { color: var(--body-text); }
+  .unlock-page h1 span { color: var(--orange); }
+  .unlock-page .password-box { background: var(--white); border-color: #637c65; }
+  .unlock-page .password-box:focus-within { border-color: #afd09e; box-shadow: 0 0 0 3px #a4c69220; }
+  .unlock-page input { color: var(--ink); }
+  .unlock-page .reveal, .unlock-page .language-switch button { color: var(--muted); }
+  .unlock-page .language-switch button[aria-pressed="true"] { background: #bed5c1; color: #17281b; }
+  .unlock-page .submit { background: #365b3c; color: #f2f5e7; border-color: #789e6d; }
+  .unlock-page .submit:hover { background: #476e4b; }
+  .unlock-page .error { color: #f0c093; }
+  .unlock-page .art::before {
+    border-color: #465a4a;
+    background: radial-gradient(ellipse at 30% 30%, #506254, #101813 75%);
+  }
+}
