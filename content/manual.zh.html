@@ -34,7 +34,7 @@
 
     <section class="quickbar" aria-label="网络信息速览">
       <div class="quick-label"><span>QUICK CONNECT</span><b>快速连接</b></div>
-      <div class="quick-item"><span>设备 Wi-Fi</span><strong>RoboNet</strong><button class="copy" data-copy="RoboNet" aria-label="复制 RoboNet">复制</button></div>
+      <div class="quick-item"><span>设备 Wi-Fi</span><strong>RoboNet2</strong><button class="copy" data-copy="RoboNet2" aria-label="复制 RoboNet2">复制</button></div>
       <div class="quick-item"><span>Wi-Fi 密码</span><strong>node123456</strong><button class="copy" data-copy="node123456" aria-label="复制 Wi-Fi 密码">复制</button></div>
       <div class="quick-item"><span>路由器管理页</span><strong>192.168.124.1</strong><button class="copy" data-copy="http://192.168.124.1" aria-label="复制管理地址">复制</button></div>
     </section>
@@ -140,7 +140,7 @@
             <li><span class="step-no">01</span><div><h3><kbd>L2</kbd> 按住 + <kbd>A</kbd> 点按：站定</h3><p>将机器狗停在平整地面，摇杆回中。按住 L2，再点按 A，让机器狗进入站立锁定，等待机身稳定。</p></div></li>
             <li><span class="step-no">02</span><div><h3>再次 <kbd>L2</kbd> + <kbd>A</kbd>：坐下 / 趴稳</h3><p>再次执行同一组合键，让机器狗趴下。这里的“坐下”指关机前机身落地；确认腹部支撑垫贴地、四肢收稳，再进行下一步。</p></div></li>
             <li><span class="step-no">03</span><div><h3>电源键短按一次，再长按关机</h3><p>操作机器狗电池上的电源键：先短按一次，再长按 3 秒以上，直到电池指示灯熄灭；确认整机已断电。不要在机器狗仍站立时直接切断电源。</p></div></li>
-            <li><span class="step-no">04</span><div><h3>断电后取出电池</h3><p>按住电池两侧释放卡扣，沿电池槽方向平稳抽出。禁止带电拔插；同时留意 Cudy、Odin1 等外置设备的线束，不要拉扯。随后按下方说明放置和充电。</p></div></li>
+            <li><span class="step-no">04</span><div><h3>断电后取出电池</h3><p>按住电池两侧释放卡扣，沿电池槽方向平稳抽出。禁止带电拔插；同时留意 路由器、Odin1 等外置设备的线束，不要拉扯。随后按下方说明放置和充电。</p></div></li>
           </ol>
           <div class="source-links"><a href="https://static.generation-robots.com/media/Go2-Handheld-Remote-Control.pdf#page=6" target="_blank" rel="noopener noreferrer">官方遥控器手册 · 站立锁定 / 再次趴下 ↗</a><a href="https://static.generation-robots.com/media/Go2-Battery-and-Charger.pdf#page=5" target="_blank" rel="noopener noreferrer">官方电池手册 · 关机按键 ↗</a><a href="#charging">安全放置与充电 →</a></div>
         </article>
@@ -185,50 +185,66 @@
     <details class="chapter-card" id="network">
       <summary class="chapter-summary">
         <span class="chapter-number">05</span>
-        <span class="chapter-thumbnail thumbnail-network"><span class="mini-network" aria-hidden="true"><span>RoboNet</span><i></i><b>Cudy</b><i></i><span>Go2</span></span></span>
-        <span class="chapter-copy"><span class="chapter-kicker">NETWORK</span><span class="chapter-title" role="heading" aria-level="3">网络配置</span><span class="chapter-description">RoboNet · Cudy / OpenWrt</span></span>
-        <span class="chapter-meta">RoboNet</span>
+        <span class="chapter-thumbnail thumbnail-network"><span class="mini-network" aria-hidden="true"><span>RoboNet2</span><i></i><b>OpenWrt</b><i></i><span>Go2</span></span></span>
+        <span class="chapter-copy"><span class="chapter-kicker">NETWORK</span><span class="chapter-title" role="heading" aria-level="3">网络配置</span><span class="chapter-description">RoboNet2 · OpenWrt / Travelmate</span></span>
+        <span class="chapter-meta">RoboNet2</span>
         <span class="fold-icon" aria-hidden="true"></span>
       </summary>
       <div class="chapter-content">
-        <p class="chapter-intro">实验室自备 Cudy 2×2 MIMO 路由设备，运行 OpenWrt，提供 RoboNet Wi-Fi。接入设备可访问机器狗局域网；配置上联后也可访问外网。</p>
+        <p class="chapter-intro">路由器已更换，当前发出 RoboNet2 Wi-Fi，Wi-Fi 密码不变。路由器通过 Travelmate 自动连接已保存的上联：优先 wxr（QR502），其次 PolyUWLAN。在 QR502 或 FJ 测试，多数时候连接 RoboNet2 即可，无需重新配置网络。</p>
       <article class="operation-card hardware-card" id="router-login">
-        <div class="operation-card-head"><div><span class="op-icon">↗</span><div><h3>OpenWrt 管理登录</h3><p>实验室提供的 Cudy 路由器管理凭据，与机器狗 SSH 账号不同。</p></div></div><span class="note-tag">本机配置</span></div>
-        <div class="ssh-details ssh-credentials"><div><span>管理地址</span><b><a href="http://192.168.124.1" target="_blank" rel="noopener noreferrer">192.168.124.1 ↗</a></b><button class="copy" data-copy="http://192.168.124.1" data-copy-label="路由器管理地址" aria-label="复制管理地址">复制</button></div><div><span>用户名</span><b>root</b><button class="copy" data-copy="root" data-copy-label="路由器管理用户名" aria-label="复制路由器管理用户名">复制</button></div><div><span>密码</span><b>password</b><button class="copy" data-copy="password" data-copy-label="路由器管理密码" aria-label="复制路由器管理密码">复制</button></div></div>
+        <div class="operation-card-head"><div><span class="op-icon">↗</span><div><h3>OpenWrt 管理登录</h3><p>当前路由器管理凭据，与机器狗 SSH 账号不同。</p></div></div><span class="note-tag">本机配置</span></div>
+        <div class="ssh-details ssh-credentials"><div><span>管理地址</span><b><a href="http://192.168.124.1" target="_blank" rel="noopener noreferrer">192.168.124.1 ↗</a></b><button class="copy" data-copy="http://192.168.124.1" data-copy-label="路由器管理地址" aria-label="复制管理地址">复制</button></div><div><span>用户名</span><b>root</b><button class="copy" data-copy="root" data-copy-label="路由器管理用户名" aria-label="复制路由器管理用户名">复制</button></div><div><span>密码</span><b>taslab2026</b><button class="copy" data-copy="taslab2026" data-copy-label="路由器管理密码" aria-label="复制路由器管理密码">复制</button></div></div>
       </article>
 
       <div class="topology card">
         <div class="card-topline"><span>连接拓扑</span><span class="live-label">局域网与上游网络</span></div>
-        <div class="network-map" role="group" aria-label="手机或电脑通过 RoboNet 接入实验室 Cudy 路由器，访问 Go2；Cudy 通过上联 Wi-Fi 接入手机热点获得外网">
-          <div class="map-upstream"><span>上游 / 外网</span><strong>手机热点</strong></div>
-          <div class="map-vertical"><span>上联 Wi-Fi</span></div>
-          <div class="map-client map-device"><small>操作设备</small><strong>手机 / 电脑</strong><span>连接 RoboNet</span></div>
-          <div class="map-wire map-wifi"><span>RoboNet</span></div>
-          <div class="map-router map-device"><small>实验室自备设备</small><strong>Cudy · OpenWrt</strong><span>管理页 192.168.124.1</span></div>
+        <div class="network-map" role="group" aria-label="手机或电脑通过 RoboNet2 访问 Go2；路由器通过 Travelmate 优先连接 QR502 的 wxr，其次连接 PolyUWLAN 获得外网">
+          <div class="map-upstream"><span>上联优先级 · 自动连接</span><strong>wxr → PolyUWLAN</strong><span>wxr 位于 QR502</span></div>
+          <div class="map-vertical"><span>Travelmate</span></div>
+          <div class="map-client map-device"><small>操作设备</small><strong>手机 / 电脑</strong><span>连接 RoboNet2</span></div>
+          <div class="map-wire map-wifi"><span>RoboNet2</span></div>
+          <div class="map-router map-device"><small>实验室自备设备</small><strong>OpenWrt · Travelmate</strong><span>管理页 192.168.124.1</span></div>
           <div class="map-wire map-lan"><span>局域网访问</span></div>
           <div class="map-robot map-device"><small>机器狗</small><strong>Go2 EDU</strong><span>192.168.123.18</span></div>
         </div>
-        <div class="map-caption">连接 RoboNet 访问 Go2；Cudy 上联成功后，可同时访问外网。</div>
+        <div class="map-caption">设备始终连接 RoboNet2；外网上联由 Travelmate 管理。wxr 优先于 PolyUWLAN。</div>
       </div>
 
       <div class="setup-grid">
         <article class="card steps-card">
-          <div class="card-topline"><span>配置步骤</span><span class="step-count">3 STEPS</span></div>
+          <div class="card-topline"><span>日常连接</span><span class="step-count">3 STEPS</span></div>
           <ol class="steps">
-            <li><span class="step-no">01</span><div><h3>连接 RoboNet Wi-Fi</h3><p>在手机或电脑的 Wi-Fi 列表中选择 Cudy 提供的 <b>RoboNet</b>，输入密码 <b>node123456</b>。</p></div></li>
-            <li><span class="step-no">02</span><div><h3>打开 Cudy 的 OpenWrt 管理页</h3><p>浏览器访问 <a href="http://192.168.124.1">192.168.124.1</a>，使用本栏的管理账号登录，再进入“网络 → 无线”。</p></div></li>
-            <li><span class="step-no">03</span><div><h3>配置上联无线</h3><p>删除其中一条用于外网接入的无线配置，然后扫描并连接上游 Wi-Fi。推荐使用手机热点，按页面提示完成连接。</p></div></li>
+            <li><span class="step-no">01</span><div><h3>连接 RoboNet2 Wi-Fi</h3><p>在手机或电脑的 Wi-Fi 列表中选择 <b>RoboNet2</b>，输入密码 <b>node123456</b>。</p></div></li>
+            <li><span class="step-no">02</span><div><h3>等待 Travelmate 自动接入外网</h3><p>已保存 wxr 和 PolyUWLAN 两个上联，wxr 优先级更高。QR502 / FJ 测试多数时候无需手动更改；在其他位置，路由器也会尝试可用的已保存网络。</p></div></li>
+            <li><span class="step-no">03</span><div><h3>需要更改时再进入管理页</h3><p>浏览器访问 <a href="http://192.168.124.1">192.168.124.1</a>，使用上方路由器账号登录，在“服务 → Travelmate”中查看上联、添加网络或调整优先级。</p></div></li>
           </ol>
-          <div class="tip"><span class="tip-icon">i</span><p>配置完成后，连接 RoboNet 的设备可同时访问机器狗局域网和外部网络。</p></div>
+          <div class="tip"><span class="tip-icon">i</span><p>配置完成后，连接 RoboNet2 的设备可同时访问机器狗局域网和外部网络。</p></div>
         </article>
         <aside class="caution-card">
-          <div class="caution-icon">!</div><p class="eyebrow">操作前确认</p><h3>保留 RoboNet AP</h3>
-          <p>只处理用于连接上游网络的无线配置。不要删除提供 <b>RoboNet</b> 的 AP 配置，否则设备会断开 Wi-Fi，路由器也可能暂时无法从当前网络访问。</p>
+          <div class="caution-icon">!</div><p class="eyebrow">操作前确认</p><h3>保留 RoboNet2 AP</h3>
+          <p>只处理用于连接上游网络的无线配置。不要删除提供 <b>RoboNet2</b> 的 AP 配置，否则设备会断开 Wi-Fi，路由器也可能暂时无法从当前网络访问。</p>
           <div class="caution-rule"></div>
-          <p class="small-note">如果不确定哪条是上联配置，先核对无线配置的模式与网络名称，再进行删除。</p>
+          <p class="small-note">新增外网入口应在 Travelmate 的上联列表操作；不需要沿用旧路由器“每次先删除无线配置”的步骤。</p>
         </aside>
       </div>
-      <div class="behavior-note"><span class="note-tag">本设备现象</span><p>目前观察到机器狗重启后需要重新配置上联网络。此说明仅记录这台设备当前的使用现象，不代表所有 OpenWrt 设备都会如此。</p></div>
+      <article class="operation-card hardware-card" id="travelmate">
+        <div class="operation-card-head"><div><span class="op-icon">↔</span><div><h3>Travelmate：多个 Wi-Fi 自动连接与优先级</h3><p>RoboNet2 是给操作设备连接的 AP；wxr / PolyUWLAN 是路由器对外连接的上联 STA。Travelmate 管理后者。</p></div></div><span class="note-tag">当前已配置</span></div>
+        <div class="manual-table-wrap"><table class="manual-table"><caption class="sr-only">本机 Travelmate 上联优先级</caption><thead><tr><th scope="col">优先级</th><th scope="col">上联网络</th><th scope="col">本机使用说明</th></tr></thead><tbody><tr><th scope="row">1 · 优先</th><td><code>wxr</code></td><td>位于 QR502。可用时优先选择。</td></tr><tr><th scope="row">2 · 备用</th><td><code>PolyUWLAN</code></td><td>wxr 不可用或连接失败时尝试；可用性取决于现场覆盖和认证状态。</td></tr></tbody></table></div>
+        <p class="controller-copy">Travelmate 扫描已保存的候选网络并尝试连接，连接中断后可重新寻找上联。使用者仍连接 RoboNet2，无需跟着上联切换手机或电脑的 Wi-Fi；切换时外网可能短暂中断。</p>
+        <details class="api-extra" id="travelmate-priority"><summary>查看、添加上联与调整优先级</summary>
+          <ol class="steps">
+            <li><span class="step-no">01</span><div><h3>打开服务页面</h3><p>在路由器管理页进入“服务 → Travelmate”（Services → Travelmate），先查看服务和当前上联状态。现有配置已能使用时，无需重新运行接口向导。</p></div></li>
+            <li><span class="step-no">02</span><div><h3>进入 Wireless Stations / 无线站点</h3><p>这里列出已保存的上联。添加其他地点的网络时，扫描实际使用的上联无线设备，选择 Add Uplink，填写该网络要求的认证信息；保留已有 wxr 和 PolyUWLAN。</p></div></li>
+            <li><span class="step-no">03</span><div><h3>拖动候选顺序</h3><p>将 wxr 排在 PolyUWLAN 前面，其他网络按需要放在后面。若上联分布在不同 radio，还需核对 Radio Selection 和 Reverse Radio Order。不要把“Service Priority”当成 Wi-Fi 顺序：它调整的是 Travelmate 进程优先级。</p></div></li>
+            <li><span class="step-no">04</span><div><h3>保存，再查看实际连接</h3><p>确认需要的上联已启用，按本机界面保存并应用或 Save &amp; Restart，等待重连，再看状态页当前使用的 SSID。按钮名称随版本可能不同，以本机界面为准。</p></div></li>
+          </ol>
+        </details>
+        <details class="api-extra"><summary>已经连上 PolyUWLAN，是否会主动切回 wxr？</summary><p class="controller-copy">候选网络的优先级与“已有连接时主动切换”是两个设置。Travelmate 的 ProActive Uplink Switch（trm_proactive）控制是否在已有连接时主动扫描并切向更高优先级上联；本页未登记该选项当前值，因此不承诺发现 wxr 后立即切回。</p></details>
+        <details class="api-extra"><summary>已连 RoboNet2，但外网不可用时</summary><p class="controller-copy">先在 Travelmate 查看当前上联和连接状态，再确认 wxr / PolyUWLAN 条目是否启用、信号与认证是否正常。若页面提示门户认证，按该网络实际要求完成登录；本页不预设 PolyUWLAN 的认证账号或自动登录脚本。没有可用上联时，先分别确认机器狗局域网访问与外网问题。</p><div class="code-panel"><div class="code-panel-bar"><span>可选：在路由器终端只读查看</span><button class="copy" data-copy-target="travelmate-status-cmd" data-copy-label="Travelmate 状态命令">复制命令</button></div><pre id="travelmate-status-cmd"><code>/etc/init.d/travelmate status</code></pre></div><p class="controller-copy">此命令在路由器上执行，不是在机器狗的 SSH 终端执行；日常可直接使用网页状态页。</p></details>
+        <div class="source-links"><a href="https://github.com/openwrt/packages/blob/master/net/travelmate/README.md" target="_blank" rel="noopener noreferrer">Travelmate 官方说明 ↗</a><a href="https://github.com/openwrt/luci/blob/master/applications/luci-app-travelmate/htdocs/luci-static/resources/view/travelmate/stations.js" target="_blank" rel="noopener noreferrer">官方 LuCI 上联排序实现 ↗</a><a href="https://github.com/openwrt/luci/blob/master/applications/luci-app-travelmate/htdocs/luci-static/resources/view/travelmate/overview.js" target="_blank" rel="noopener noreferrer">主动切换 / 进程优先级定义 ↗</a></div>
+      </article>
+      <div class="behavior-note"><span class="note-tag">配置更新 · 2026-11-12</span><p>新路由器通过 Travelmate 自动连接已保存的上联，QR502 / FJ 测试多数时候无需手动配置。以上网络和优先级来自实验室当前记录；原“重启后需重新配置上联”已不适用于当前说明。</p></div>
       </div>
     </details>
 
@@ -241,12 +257,12 @@
         <span class="fold-icon" aria-hidden="true"></span>
       </summary>
       <div class="chapter-content">
-        <p class="chapter-intro">先连接 RoboNet，再通过下方地址登录机器狗终端。192.168.124.1 是 Cudy 路由器的管理地址，机器狗 SSH 地址为 192.168.123.18。</p>
+        <p class="chapter-intro">先连接 RoboNet2，再通过下方地址登录机器狗终端。192.168.124.1 是路由器的管理地址，机器狗 SSH 地址为 192.168.123.18。</p>
       <article class="operation-card ssh-card">
         <div class="operation-card-head"><div><span class="op-icon">$_</span><div><h3>机器狗终端连接信息</h3><p>实验室提供的本机账号与地址。</p></div></div><span class="note-tag">本机配置</span></div>
-        <div class="ssh-details ssh-credentials"><div><span>SSH 地址</span><b>192.168.123.18</b><button class="copy" data-copy="192.168.123.18" aria-label="复制 SSH 地址">复制</button></div><div><span>用户名</span><b>unitree</b><button class="copy" data-copy="unitree" aria-label="复制 SSH 用户名">复制</button></div><div><span>密码</span><b>1</b><button class="copy" data-copy="1" data-copy-label="SSH 密码" aria-label="复制 SSH 密码">复制</button></div></div>
+        <div class="ssh-details ssh-credentials"><div><span>SSH 地址</span><b>192.168.123.18</b><button class="copy" data-copy="192.168.123.18" aria-label="复制 SSH 地址">复制</button></div><div><span>用户名</span><b>unitree</b><button class="copy" data-copy="unitree" aria-label="复制 SSH 用户名">复制</button></div><div><span>密码</span><b>123</b><button class="copy" data-copy="123" data-copy-label="SSH 密码" aria-label="复制 SSH 密码">复制</button></div></div>
         <div class="command-template"><span>在终端执行</span><code>ssh unitree@192.168.123.18</code><button class="copy command-copy" data-copy="ssh unitree@192.168.123.18" aria-label="复制 SSH 命令">复制命令</button></div>
-        <p class="ssh-help">出现密码提示后输入 <b>1</b> 并回车。终端输入密码时通常不显示字符。</p>
+        <p class="ssh-help">出现密码提示后输入 <b>123</b> 并回车。终端输入密码时通常不显示字符。</p>
       </article>
       </div>
     </details>
@@ -389,7 +405,7 @@
         <nav class="api-guide-nav" aria-label="本体数据操作步骤"><a href="#body-connect">01 连接电脑</a><a href="#body-sdk">SDK 选用与安装</a><a href="#body-state">02 读取数据</a><a href="#body-camera">03 自带相机</a><a href="#body-control">04 常用指令</a><a href="#body-examples">下载示例</a></nav>
         <article class="operation-card hardware-card" id="body-connect">
           <div class="operation-card-head"><div><span class="op-icon">01</span><div><h3>连接本体电脑，确认开发环境</h3><p>已提供的 SSH 入口：192.168.123.18 / unitree；密码见 SSH 栏目。</p></div></div><span class="note-tag">先只读检查</span></div>
-          <p class="controller-copy">先连接 RoboNet，再登录机器狗电脑。登录后，选择连接机器人内部网络的网卡运行 DDS / ROS 2 程序；SSH 地址、DDS 网卡名与相机 topic 分别确认。</p>
+          <p class="controller-copy">先连接 RoboNet2，再登录机器狗电脑。登录后，选择连接机器人内部网络的网卡运行 DDS / ROS 2 程序；SSH 地址、DDS 网卡名与相机 topic 分别确认。</p>
           <div class="code-panel"><div class="code-panel-bar"><span>在电脑终端登录</span><button class="copy" data-copy-target="body-connect-cmd" data-copy-label="命令" aria-label="复制在电脑终端登录">复制命令</button></div><pre id="body-connect-cmd"><code>ssh unitree@192.168.123.18</code></pre></div><div class="code-panel"><div class="code-panel-bar"><span>登录后只读检查</span><button class="copy" data-copy-target="body-environment-cmd" data-copy-label="命令" aria-label="复制登录后只读检查">复制命令</button></div><pre id="body-environment-cmd"><code>ip -br -4 addr
 ip route
 printf &#x27;ROS_DISTRO=%s\n&#x27; &quot;${ROS_DISTRO:-未加载}&quot;
@@ -397,7 +413,7 @@ command -v ros2 || true
 python3 -c &quot;import importlib.util; print(&#x27;SDK2:&#x27;, importlib.util.find_spec(&#x27;unitree_sdk2py&#x27;))&quot;</code></pre></div>
           <p class="controller-copy">从上面的网卡列表确认内部网络接口，然后在当前 Bash 终端设置一次，供后续示例使用。</p><div class="code-panel"><div class="code-panel-bar"><span>设置实际 DDS 网卡</span><button class="copy" data-copy-target="body-interface-cmd" data-copy-label="命令">复制命令</button></div><pre id="body-interface-cmd"><code>read -r -p &quot;输入机器人内部网络的网卡名: &quot; GO2_IFACE
 export GO2_IFACE</code></pre></div>
-          <div class="hardware-note"><b>SSH 可达之后，还需确认 DDS 通信</b><p>RoboNet 的路由访问可用于 SSH，但 DDS 发现可能受网卡、组播与网段影响。建议先在机器狗内部电脑运行示例；从外部电脑直接订阅时，需另行确认 DDS 可达。网卡名不能固定假设为 eth0。</p></div>
+          <div class="hardware-note"><b>SSH 可达之后，还需确认 DDS 通信</b><p>RoboNet2 的路由访问可用于 SSH，但 DDS 发现可能受网卡、组播与网段影响。建议先在机器狗内部电脑运行示例；从外部电脑直接订阅时，需另行确认 DDS 可达。网卡名不能固定假设为 eth0。</p></div>
           <details class="api-extra"><summary>已有官方 ROS 2 工作区时：加载通信环境</summary><p class="controller-copy">下面以官方支持的 Humble 环境和默认 DDS domain 0 为例。路径为示例；本机版本或工作区不同，使用对应路径。还未安装时，按官方仓库完成依赖与消息包编译后再运行。</p><div class="code-panel"><div class="code-panel-bar"><span>示例：Ubuntu 22.04 / ROS 2 Humble</span><button class="copy" data-copy-target="body-ros-env-cmd" data-copy-label="命令" aria-label="复制示例：Ubuntu 22.04 / ROS 2 Humble">复制命令</button></div><pre id="body-ros-env-cmd"><code># 前提：已安装 ROS 2、已编译官方 unitree_ros2 工作区
 # 沿用上一步填写的 GO2_IFACE；在每个新终端确认此变量已设置
 source /opt/ros/humble/setup.bash

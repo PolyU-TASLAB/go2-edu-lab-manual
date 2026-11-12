@@ -1,6 +1,6 @@
 # Unitree Go2 EDU 实验室使用手册
 
-这是一个默认英文、可切换中文的静态网页项目，按常见操作分栏，记录本实验室 Unitree Go2 EDU 的开机、遥控器控制、RoboNet / OpenWrt 网络配置、SSH 连接、硬件接口和安装孔位，以及 Odin1、MID360 与 GNSS 天线安装方案。产品图来自对应厂商，保存在本地 `assets/` 目录，可离线显示；产品图不是实验室实拍。
+这是一个默认英文、可切换中文的静态网页项目，按常见操作分栏，记录本实验室 Unitree Go2 EDU 的开机、遥控器控制、RoboNet2 / OpenWrt 网络配置、SSH 连接、硬件接口和安装孔位，以及 Odin1、MID360 与 GNSS 天线安装方案。产品图来自对应厂商，保存在本地 `assets/` 目录，可离线显示；产品图不是实验室实拍。
 
 仓库已按实验室要求公开。GitHub Pages 发布密码解密版正文，图片与图纸附件保持公开下载。
 
@@ -12,7 +12,7 @@
 
 外观通过 `theme.css` 的 `prefers-color-scheme` 自动跟随电脑 / 手机的深浅色偏好，系统切换时即时生效。解锁页与手册共用主题，覆盖正文、折叠卡片、表格、网络拓扑、代码、表单和状态标签；原始图片与图纸保持原色。没有单独保存主题选择，中英文切换不影响外观跟随。
 
-开机流程结合实验室记录与宇树 Go2 用户手册；遥控器栏目依据官方现行手册整理了开关机、绑定、摇杆与常用按键，并注明 R1 / R3 差异。网络使用实验室自备的 Cudy 设备运行 OpenWrt。SSH 地址、用户名与密码根据实验室提供的本机配置填写，页面支持复制；遥控器绑定编码尚未记录。开机栏目附有宇树用户手册来源。
+开机流程结合实验室记录与宇树 Go2 用户手册；遥控器栏目依据官方现行手册整理了开关机、绑定、摇杆与常用按键，并注明 R1 / R3 差异。当前路由器提供 RoboNet2，通过 Travelmate 自动连接已保存的上联网络；wxr（QR502）优先于 PolyUWLAN。QR502 / FJ 测试多数时候无需手动配置。SSH 地址、用户名与密码根据实验室提供的本机配置填写，页面支持复制；遥控器绑定编码尚未记录。开机栏目附有宇树用户手册来源。
 
 ## 本地查看
 
@@ -101,3 +101,14 @@ python3 -m http.server 8000
 - `#shutdown`：L2 + A 站立锁定，再次 L2 + A 趴稳落地，再操作电池电源键短按后长按，确认断电后取出电池。
 - `#charging`：腹部支撑垫落地放置，保护本机背部 Odin1 与线束；主电池关机取出、冷却后使用官方专用充电器，附长期存放要求。
 - 新增内容已同步中英文，沿用默认折叠卡片与现有字号。资料依据官方遥控器手册、Go2 EDU 用户手册及 Go2 电池与充电器手册，查阅日期 2026-10-27；未连接或操作机器人。
+
+## 当前网络与 Travelmate（2026-11-12）
+
+- 路由器已更换；Wi-Fi 为 RoboNet2，Wi-Fi 密码沿用原值。新路由器型号未提供，当前说明不沿用旧 Cudy 的型号或天线规格。
+- Travelmate 自动管理已保存的多个上联，wxr（QR502）优先于 PolyUWLAN。QR502 / FJ 测试多数时候只需连接 RoboNet2；其他地点可使用可用的已保存上联或进入管理页添加网络。
+- 管理入口仍为 192.168.124.1，用户名 root；管理密码与机器狗 SSH 密码已按最新实验室记录更新，具体值见网页各自的凭据卡片及复制按钮。
+- `#travelmate` 解释 AP / STA、上联优先级及当前网络；`#travelmate-priority` 说明“服务 → Travelmate → Wireless Stations”的添加与排序流程。
+- 优先选择与 `trm_proactive` 主动切换分开说明；Service Priority 是进程调度优先级，不是 SSID 优先级。未假设本机主动切换开关或 PolyUWLAN 自动认证脚本的状态。
+- 已移除旧路由器“重启后重新配置、先删除无线配置”的操作流程。同步更新中英文首页与下载示例说明 / ZIP。此次仅更新文档，未登录或更改路由器和机器狗。
+
+Travelmate 操作依据：[官方 README](https://github.com/openwrt/packages/blob/master/net/travelmate/README.md)、[LuCI 上联列表](https://github.com/openwrt/luci/blob/master/applications/luci-app-travelmate/htdocs/luci-static/resources/view/travelmate/stations.js)、[LuCI 概览选项](https://github.com/openwrt/luci/blob/master/applications/luci-app-travelmate/htdocs/luci-static/resources/view/travelmate/overview.js)。本机网络和优先级来自实验室记录。
